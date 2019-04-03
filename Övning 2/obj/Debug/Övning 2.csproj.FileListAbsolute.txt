@@ -1,0 +1,7 @@
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\obj\Debug\Övning 2.csproj.CoreCompileInputs.cache
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\bin\Debug\Övning_2__.NET_Cs___Flow_Control.exe.config
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\bin\Debug\Övning_2__.NET_Cs___Flow_Control.exe
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\bin\Debug\Övning_2__.NET_Cs___Flow_Control.pdb
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\obj\Debug\Övning 2.csprojAssemblyReference.cache
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\obj\Debug\Övning_2__.NET_Cs___Flow_Control.exe
+C:\Users\Johan Ståhlberg\source\repos\Personalregister\Övning 2 - .NET Cs - Flow Control\obj\Debug\Övning_2__.NET_Cs___Flow_Control.pdb
