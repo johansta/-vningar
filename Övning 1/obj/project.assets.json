@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Ovningar\\Övning 1\\Övning 1.csproj",
+      "projectUniqueName": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Lexicon-Exercises\\Övning 1\\Övning 1.csproj",
       "projectName": "Övning 1",
-      "projectPath": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Ovningar\\Övning 1\\Övning 1.csproj",
+      "projectPath": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Lexicon-Exercises\\Övning 1\\Övning 1.csproj",
       "packagesPath": "C:\\Users\\Johan Ståhlberg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Ovningar\\Övning 1\\obj\\",
+      "outputPath": "C:\\Users\\Johan Ståhlberg\\source\\repos\\Lexicon-Exercises\\Övning 1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

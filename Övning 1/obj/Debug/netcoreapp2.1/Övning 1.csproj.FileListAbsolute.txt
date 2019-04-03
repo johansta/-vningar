@@ -19,3 +19,13 @@ C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 1\obj\Debug\netcoreapp2.1
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.AssemblyInfo.cs
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.dll
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.pdb
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\bin\Debug\netcoreapp2.1\Övning 1.deps.json
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\bin\Debug\netcoreapp2.1\Övning 1.runtimeconfig.json
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\bin\Debug\netcoreapp2.1\Övning 1.runtimeconfig.dev.json
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\bin\Debug\netcoreapp2.1\Övning 1.dll
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\bin\Debug\netcoreapp2.1\Övning 1.pdb
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.csproj.CoreCompileInputs.cache
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.AssemblyInfoInputs.cache
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.AssemblyInfo.cs
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.dll
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 1\obj\Debug\netcoreapp2.1\Övning 1.pdb

@@ -11,3 +11,10 @@ C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 3\bin\Debug\Övning 3.pdb
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 3\obj\Debug\Övning 3.csproj.CoreCompileInputs.cache
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 3\obj\Debug\Övning 3.exe
 C:\Users\Johan Ståhlberg\source\repos\Övning\Övning 3\obj\Debug\Övning 3.pdb
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\bin\Debug\Övning 3.exe.config
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\bin\Debug\Övning 3.exe
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\bin\Debug\Övning 3.pdb
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\obj\Debug\Övning 3.csprojAssemblyReference.cache
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\obj\Debug\Övning 3.csproj.CoreCompileInputs.cache
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\obj\Debug\Övning 3.exe
+C:\Users\Johan Ståhlberg\source\repos\Lexicon-Exercises\Övning 3\obj\Debug\Övning 3.pdb
