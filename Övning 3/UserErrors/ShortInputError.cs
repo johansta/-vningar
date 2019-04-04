@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_3
+namespace Övning_3.UserErrors
 {
-    class TextInputError : UserError
+    class ShortInputError : UserError
     {
         public override string UEMessage()
-        {         
-            return "​You tried to use a text input in a numericonly field. This fired an error!";
+        {
+            return "Your text is to short. This fired an error!";
         }
     }
 }

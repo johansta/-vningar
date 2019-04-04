@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_3
+namespace Övning_3.Animals
 {
     class Horse : Animal
     {

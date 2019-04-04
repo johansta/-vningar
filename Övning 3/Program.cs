@@ -1,4 +1,6 @@
-﻿using Övning_3.Birds;
+﻿using Övning_3.Animals;
+using Övning_3.Birds;
+using Övning_3.UserErrors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,7 @@ namespace Övning_3
             //person.Age = 10;
             //person.Name = "Johan";
 
-            List<Animal> animals = new List<Animal>();
+            /*List<Animal> animals = new List<Animal>();
 
             animals.Add(new Flamingo("Erik",100,20,10,true));
             animals.Add(new Dog("Erik", 100, 20, 5));
@@ -49,13 +51,33 @@ namespace Övning_3
 
             foreach (var animal in animals)
             {
+
+                if (animal is Dog dog)
+                {
+                    Console.WriteLine(dog.FavoritCandy());
+                }
+          
                 if (animal is Dog)
                 {
                     Dog dog = animal as Dog;
 
                     Console.WriteLine(dog.FavoritCandy());
                 }
-            }
+
+        }*/
+
+            /*List<UserError> userErrors = new List<UserError>();
+
+            userErrors.Add(new EmptyInputError());
+            userErrors.Add(new NumericInputError());
+            userErrors.Add(new TextInputError());
+            userErrors.Add(new LengthInputError());
+            userErrors.Add(new ShortInputError());
+
+            foreach (var userError in userErrors)
+            {
+                Console.WriteLine(userError.UEMessage());
+            }*/
 
             Console.ReadKey();
         }
