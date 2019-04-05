@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Test
 {
     class PersonHandler
     {
-        private class Person : IPerson
+        /*private class Person : IPerson
         {
             private int age;
 
@@ -79,19 +80,30 @@ namespace Test
                     }
                 }
             }
-        }
+        }*/
 
         public IPerson CreatePerson(int age, string fname, string lname, double height, double weight)
         {
-            var person = new Person()
-            {
-              Age = age,
-              Fname = fname,
-              Lname = lname,
-              Height = height,
-              Weight = weight
-            };
-          
+            ConstructorInfo privateConstructor = typeof(Person).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic,
+            null, Type.EmptyTypes, null);
+
+            Person person = (Person)privateConstructor.Invoke(null);
+
+            person.Age = age;
+            person.Fname = fname;
+            person.Lname = lname;
+            person.Height = height;
+            person.Weight = weight;
+
+            //Person person = //new Person() 
+            /*{
+                Age = age,
+                Fname = fname,
+                Lname = lname,
+                Height = height,
+                Weight = weight
+            };*/
+
             return person;
         }
 

@@ -25,8 +25,9 @@ namespace Övning_3
 
             Console.WriteLine(personHandler.GetAge(person));
             Console.WriteLine(personHandler.GetWeight(person));
-
-            //Person test = null;//Priavte nested class
+        
+            //Person test = null;
+            //test = new Person();
             //person.Age = 10;
             //person.Name = "Johan";
 

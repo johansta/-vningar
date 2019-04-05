@@ -52,6 +52,7 @@
     <Compile Include="Birds\Pelican.cs" />
     <Compile Include="Birds\Swan.cs" />
     <Compile Include="IPerson.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="UserErrors\EmptyInputError.cs" />
     <Compile Include="UserErrors\LengthInputError.cs" />
     <Compile Include="UserErrors\NumericInputError.cs" />

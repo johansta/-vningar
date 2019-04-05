@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Test
 {
     public interface IPerson
-    {       
+    {      
         int Age { get; }
 
         string Fname { get; }
