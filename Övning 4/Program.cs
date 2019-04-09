@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-namespace SkalProj_Datastrukturer_Minne
+namespace Övning_4
 {
     class Program
     {

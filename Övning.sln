@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 2", "Övning 2\Övn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 3", "Övning 3\Övning 3.csproj", "{82F52D5B-3376-4D95-B98E-3196849B5A58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkalProj_Datastrukturer_Minne", "skalproj_datastrukturer_minne\SkalProj_Datastrukturer_Minne.csproj", "{F5B314C5-B431-47E1-A8EC-7F8654EBF42A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 4", "Övning 4\Övning 4.csproj", "{F5B314C5-B431-47E1-A8EC-7F8654EBF42A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

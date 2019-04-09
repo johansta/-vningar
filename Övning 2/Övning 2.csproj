@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E0695F24-00C1-4859-82A4-6B445AEDB82B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Övning_2__.NET_Cs___Flow_Control</RootNamespace>
-    <AssemblyName>Övning_2__.NET_Cs___Flow_Control</AssemblyName>
+    <RootNamespace>Övning_2</RootNamespace>
+    <AssemblyName>Övning 2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
