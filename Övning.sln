@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 4 Extra", "Övning 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 5", "Övning 5\Övning 5.csproj", "{E168C005-5EF9-4932-B239-281D096F9842}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Övning 4", "Övning 4", "{39F6CAE1-C7AD-4CF0-AD05-C358B330E2AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Övning 5", "Övning 5", "{28B9CA55-6B64-4CE7-A288-C92B001D3D3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5B314C5-B431-47E1-A8EC-7F8654EBF42A} = {39F6CAE1-C7AD-4CF0-AD05-C358B330E2AB}
+		{316F919A-3752-4C48-A3F8-0EE37ABAAF02} = {39F6CAE1-C7AD-4CF0-AD05-C358B330E2AB}
+		{E168C005-5EF9-4932-B239-281D096F9842} = {28B9CA55-6B64-4CE7-A288-C92B001D3D3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91811F29-5F72-4978-A2F8-FAD4C4F3CEE8}
