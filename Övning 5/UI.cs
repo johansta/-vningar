@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-namespace Övning_5
+namespace Övning_5_Presentation_Logic
 {
     class UI
     {
@@ -21,6 +21,7 @@ namespace Övning_5
             menuItems.Add(new MenuItem('l', "list all viechles"));
             menuItems.Add(new MenuItem('g', "list all viechles by type and count each group"));
             menuItems.Add(new MenuItem('f', "find a car by licence number"));
+            menuItems.Add(new MenuItem('a', "find a car by custom attribute"));
             menuItems.Add(new MenuItem('q', "exit application"));
         }
 
