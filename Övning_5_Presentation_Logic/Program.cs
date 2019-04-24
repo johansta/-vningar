@@ -13,8 +13,8 @@ namespace Övning_5_Presentation_Logic
         {
             GarageHandler garageHandler = GarageHandler.GetInstance();
 
-            Queue<Vehicle> queue = garageHandler.GetTestData();
-            garageHandler.SetCapacity(queue.Count);
+            //Queue<Vehicle> queue = garageHandler.GetTestData();
+            garageHandler.SetCapacity(10);
 
             UI ui = new UI(garageHandler);
 
@@ -22,42 +22,31 @@ namespace Övning_5_Presentation_Logic
             {
                 ui.PrintMainMenu();
 
-                Console.Write("Input command: ");
+                Console.Write(Environment.NewLine + "Input command: ");
 
-                char command = Console.ReadLine()[0];
+                String input = Console.ReadLine();
 
-                Action action = ui.GetCommandAction(command);
-                action();
+                bool success = false;
 
-                /*switch (command)
+                if (!String.IsNullOrWhiteSpace(input) && input.Length == 1)
                 {
-                    case 'c':
-                        garageHandler.SetGarageCapacity();
-                        break;
-                    case 'p':
-                        garageHandler.Park(queue);
-                        break;
-                    case 'd':
-                        garageHandler.Drive();
-                        break;
-                    case 'l':
-                        garageHandler.ListVehicles();
-                        break;
-                    case 'g':
-                        garageHandler.ListByVehicleType();
-                        break;
-                    case 'f':
-                        garageHandler.Garage.Find("EFG123");
-                        break;
-                    case 'a':
-                        garageHandler.Setup();
-                        break;
-                    case 'q':
-                        return;
-                    default:
-                        break;
-                }*/
+                    char command = input[0];
 
+                    if (ui.RunMenuAction(command))
+                    {
+                        success = true;
+
+                        //Console.WriteLine("Press any key to continue..." + Environment.NewLine);
+                        //Console.ReadKey();
+                    }                  
+                }
+
+                if (!success)
+                { 
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(Environment.NewLine + "Invalid command, try again." + Environment.NewLine);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
         }
 

@@ -40,45 +40,63 @@ namespace Övning_5_Presentation_Logic
 
             queue.Enqueue(new Car("ABC123", FuelType.GASOLINE));
             queue.Enqueue(new Car("EFG123",FuelType.DIESEL));
-            queue.Enqueue(new Boat("HIJ123",3));
+            //queue.Enqueue(new Boat("HIJ123",3));
             queue.Enqueue(new Boat("KLM123",2));
             queue.Enqueue(new Airplane("NOP123",100));
             queue.Enqueue(new Airplane("NOP456",42));
             queue.Enqueue(new Motorcycle("NOP789",true));
-            queue.Enqueue(new Motorcycle("QRS123",false));
+            //queue.Enqueue(new Motorcycle("QRS123",false));
             queue.Enqueue(new Bus("QRS456",66));
             queue.Enqueue(new Bus("QRS789", 90));
 
             return queue;
         }
 
-        public void Setup()
-        {
-            Dictionary<String, object> predicate = new Dictionary<String, object>();
-
-            predicate.Add("LicensePlate", "EFG123");
-            predicate.Add("FuelType", FuelType.DIESEL);
-
-            ListVehiclesByPredicate(predicate);
+        public void FindVehicleByAttributes()
+        {           
+            Dictionary<String, String> attributes = Input.InputAttributes();                    
+            ListVehiclesByPredicate(attributes);
         }
 
-        public void ListVehiclesByLicensePlate(String license)
+        public void FindVehicleByLicense()
+        {
+            String license = Input.InputLicense();
+
+            if(license != null)
+            {
+                ListVehiclesByLicensePlate(license);
+            }
+        }
+
+        private void ListVehiclesByLicensePlate(String license)
         {
             Vehicle viechle = Garage.Find(license);
 
-            StringBuilder stringBuilder = new StringBuilder();
+            if (viechle != null)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(Environment.NewLine);        
-            stringBuilder.Append(viechle.ToString());
-            stringBuilder.Append(Environment.NewLine);
-            stringBuilder.Append(Environment.NewLine);
-            
-            Console.WriteLine(stringBuilder);
+                stringBuilder.Append(Environment.NewLine);
+                stringBuilder.Append(viechle.ToString());
+                stringBuilder.Append(Environment.NewLine);
+                stringBuilder.Append(Environment.NewLine);
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(stringBuilder);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine(Environment.NewLine + "Could not find any vehicles with the license plate: " + license + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
         }
 
-        public void ListVehiclesByPredicate(Dictionary<String, object> predicate)
+        private void ListVehiclesByPredicate(Dictionary<String, String> attributes)
         {
-            IEnumerable<Vehicle> result = Garage.Find(predicate).ToList();
+            IEnumerable<Vehicle> result = Garage.Find(attributes).ToList();
 
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -100,6 +118,14 @@ namespace Övning_5_Presentation_Logic
 
             stringBuilder.Append(Environment.NewLine);
 
+            if(Garage.Count() == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine(Environment.NewLine + "The garage is empty!" + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.White;
+                return;
+            }
+
             foreach (var viechle in Garage)
             {              
                 stringBuilder.Append(viechle.ToString());
@@ -107,7 +133,9 @@ namespace Övning_5_Presentation_Logic
                 stringBuilder.Append(Environment.NewLine);
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(stringBuilder);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void ListByVehicleType()
@@ -118,11 +146,16 @@ namespace Övning_5_Presentation_Logic
 
             foreach (var viechleType in viechleTypes)
             {
-                stringBuilder.Append("Vehicle Type: " + viechleType.Key);
-                stringBuilder.Append("Vehicle Type: " + viechleTypes.Count());
+                stringBuilder.Append(Environment.NewLine);
+                stringBuilder.Append("Vehicle Type: " + viechleType.Key.Name);
+                stringBuilder.Append(Environment.NewLine);
+                stringBuilder.Append("Count: " + viechleType.Count());
+                stringBuilder.Append(Environment.NewLine);
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(stringBuilder);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Drive()
@@ -155,13 +188,29 @@ namespace Övning_5_Presentation_Logic
 
             }
         }
+        
+        public void Park()
+        {
+            Vehicle vehicle = Input.InputVehicle();
+
+            if (vehicle != null)          
+            {               
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(Environment.NewLine + "Parking vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Garage.Park(vehicle); 
+            }
+        }
 
         public void Park(Queue<Vehicle> queue)
         {
             if (queue.Count > 0)
             {
                 Vehicle vehicle = queue.Dequeue();
-                Console.WriteLine(Environment.NewLine + "Parking vehicle: " + vehicle + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine(Environment.NewLine + "Parking vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.White;
 
                 Garage.Park(vehicle); 
             }

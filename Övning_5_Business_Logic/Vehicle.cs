@@ -6,14 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Övning_5_Business_Logic
-{
-    /*public enum Color
-    {
-        RED,
-        GREEN,
-        BLUE
-    }*/
-
+{   
     public abstract class Vehicle
     {
         public Vehicle(String licensePlate)
@@ -29,22 +22,20 @@ namespace Övning_5_Business_Logic
             set { licensePlate = value; }
         }
 
-        //public Color Color { get; set; }
-
         public override String ToString()
         {
             return "LicensePlate: " + licensePlate + Environment.NewLine + "Viechle Type: " + this.GetType().Name;
         }
 
-        public Dictionary<String, object> GetProperties()
+        public Dictionary<String, String> GetProperties()
         {
             PropertyInfo[] props = GetType().GetProperties();
 
-            Dictionary<String, object> result = new Dictionary<String, object>();
+            Dictionary<String, String> result = new Dictionary<String, String>();
 
             foreach (var prop in props)
             {
-                result.Add(prop.Name, prop.GetValue(this));
+                result.Add(prop.Name, prop.GetValue(this).ToString());
             }
 
             return result;

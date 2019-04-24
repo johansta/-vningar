@@ -45,29 +45,36 @@ namespace Övning_5_Business_Logic
         }
 
         public T Find(String licensePlate)
-        {                    
-            return vehicles.Where((x) =>
+        {
+            IEnumerable<T> result = vehicles.Where((x) =>
             {
                 if (x == null)
                 {
                     return false;
                 }
 
-                if(x.LicensePlate.ToUpper() == licensePlate.ToUpper())
+                if (x.LicensePlate.ToUpper() == licensePlate.ToUpper())
                 {
                     return true;
                 }
 
                 return false;
             }
-            ).ToArray()[0];
+            );
+
+            if(result.Count() == 1)
+            {
+                return result.ToArray()[0];
+            }
+
+            return null;
         }
 
-        public IEnumerable<T> Find(Dictionary<String,object> predicate)
+        public IEnumerable<T> Find(Dictionary<String,String> attributes)
         {
             IEnumerable<T> result = vehicles;
 
-            foreach (var kvp in predicate)
+            foreach (var kvp in attributes)
             {               
                 result = result.Where((x) => 
                 {
@@ -76,7 +83,7 @@ namespace Övning_5_Business_Logic
                         return false; 
                     }
 
-                    if(x.GetProperties().TryGetValue(kvp.Key, out object value))
+                    if(x.GetProperties().TryGetValue(kvp.Key, out string value))
                     {
                         if (value.Equals(kvp.Value)) {
                             return true;
