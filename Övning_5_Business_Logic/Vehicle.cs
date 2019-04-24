@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Bussiness_Logic
+namespace Övning_5_Business_Logic
 {
     /*public enum Color
     {

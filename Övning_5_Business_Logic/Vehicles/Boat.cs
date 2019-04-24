@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Bussiness_Logic.Vehicles
+namespace Övning_5_Business_Logic.Vehicles
 {
     public class Boat : Vehicle
     {

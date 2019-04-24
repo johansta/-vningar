@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Bussiness_Logic
+namespace Övning_5_Business_Logic
 {
     public class Gararge<T> : IEnumerable<T> where T : Vehicle
     {
@@ -45,8 +45,22 @@ namespace Övning_5_Bussiness_Logic
         }
 
         public T Find(String licensePlate)
-        {
-            return (T)vehicles.Where(x => x.LicensePlate.ToUpper() == licensePlate.ToUpper());
+        {                    
+            return vehicles.Where((x) =>
+            {
+                if (x == null)
+                {
+                    return false;
+                }
+
+                if(x.LicensePlate.ToUpper() == licensePlate.ToUpper())
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            ).ToArray()[0];
         }
 
         public IEnumerable<T> Find(Dictionary<String,object> predicate)

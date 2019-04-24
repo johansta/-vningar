@@ -1,5 +1,5 @@
-﻿using Övning_5_Bussiness_Logic;
-using Övning_5_Bussiness_Logic.Vehicles;
+﻿using Övning_5_Business_Logic;
+using Övning_5_Business_Logic.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +52,30 @@ namespace Övning_5_Presentation_Logic
             return queue;
         }
 
+        public void Setup()
+        {
+            Dictionary<String, object> predicate = new Dictionary<String, object>();
+
+            predicate.Add("LicensePlate", "EFG123");
+            predicate.Add("FuelType", FuelType.DIESEL);
+
+            ListVehiclesByPredicate(predicate);
+        }
+
+        public void ListVehiclesByLicensePlate(String license)
+        {
+            Vehicle viechle = Garage.Find(license);
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(Environment.NewLine);        
+            stringBuilder.Append(viechle.ToString());
+            stringBuilder.Append(Environment.NewLine);
+            stringBuilder.Append(Environment.NewLine);
+            
+            Console.WriteLine(stringBuilder);
+        }
+
         public void ListVehiclesByPredicate(Dictionary<String, object> predicate)
         {
             IEnumerable<Vehicle> result = Garage.Find(predicate).ToList();
@@ -86,7 +110,7 @@ namespace Övning_5_Presentation_Logic
             Console.WriteLine(stringBuilder);
         }
 
-        public String ListByVehicleType()
+        public void ListByVehicleType()
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -98,7 +122,7 @@ namespace Övning_5_Presentation_Logic
                 stringBuilder.Append("Vehicle Type: " + viechleTypes.Count());
             }
 
-            return stringBuilder.ToString();
+            Console.WriteLine(stringBuilder);
         }
 
         public void Drive()

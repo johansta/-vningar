@@ -1,5 +1,5 @@
-﻿using Övning_5_Bussiness_Logic;
-using Övning_5_Bussiness_Logic.Vehicles;
+﻿using Övning_5_Business_Logic;
+using Övning_5_Business_Logic.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +16,7 @@ namespace Övning_5_Presentation_Logic
             Queue<Vehicle> queue = garageHandler.GetTestData();
             garageHandler.SetCapacity(queue.Count);
 
-            UI ui = new UI();
+            UI ui = new UI(garageHandler);
 
             while (true)
             {
@@ -26,7 +26,10 @@ namespace Övning_5_Presentation_Logic
 
                 char command = Console.ReadLine()[0];
 
-                switch (command)
+                Action action = ui.GetCommandAction(command);
+                action();
+
+                /*switch (command)
                 {
                     case 'c':
                         garageHandler.SetGarageCapacity();
@@ -44,26 +47,20 @@ namespace Övning_5_Presentation_Logic
                         garageHandler.ListByVehicleType();
                         break;
                     case 'f':
-                        garageHandler.Garage.Find("Licence plate");
+                        garageHandler.Garage.Find("EFG123");
                         break;
                     case 'a':
-
-                        Dictionary<String, object> predicate = new Dictionary<String, object>();
-                       
-                        predicate.Add("LicensePlate", "EFG123");
-                        predicate.Add("FuelType", FuelType.DIESEL);
-                       
-                        garageHandler.ListVehiclesByPredicate(predicate);
-
+                        garageHandler.Setup();
                         break;
                     case 'q':
                         return;
                     default:
                         break;
-                }
+                }*/
 
             }
         }
 
+        
     }
 }
