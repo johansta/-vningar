@@ -1,14 +1,14 @@
-﻿using Övning_5_Business_Logic;
-using Övning_5_Business_Logic.Vehicles;
+﻿using Övning_5_Data_Access_Layer;
+using Övning_5_Data_Access_Layer.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Presentation_Logic
+namespace Övning_5_Tools
 {
-    class Input
+    public class Input
     {
         public static Vehicle InputVehicle()
         {

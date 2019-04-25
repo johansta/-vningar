@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Business_Logic
+namespace Övning_5_Data_Access_Layer
 {   
     public abstract class Vehicle
     {

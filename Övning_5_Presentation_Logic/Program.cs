@@ -1,5 +1,4 @@
 ﻿using Övning_5_Business_Logic;
-using Övning_5_Business_Logic.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,8 +12,8 @@ namespace Övning_5_Presentation_Logic
         {
             GarageHandler garageHandler = GarageHandler.GetInstance();
 
-            //Queue<Vehicle> queue = garageHandler.GetTestData();
-            garageHandler.SetCapacity(10);
+            Queue<Övning_5_Data_Access_Layer.Vehicle> queue = garageHandler.GetTestData();
+            garageHandler.SetCapacity(20);
 
             UI ui = new UI(garageHandler);
 

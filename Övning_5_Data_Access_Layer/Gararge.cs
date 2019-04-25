@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Business_Logic
+namespace Övning_5_Data_Access_Layer
 {
-    public class Gararge<T> : IEnumerable<T> where T : Vehicle
+    public class Gararge<T> : IGarageRepository<T> where T : Vehicle
     {
         public Gararge(int capacity)
         {
@@ -22,7 +22,10 @@ namespace Övning_5_Business_Logic
         {
             for (int i = 0; i < numVehicles; i++)
             {
-                yield return vehicles[i];
+                if (vehicles[i] != null)
+                {
+                    yield return vehicles[i];
+                }
             }       
         }
 
@@ -31,14 +34,14 @@ namespace Övning_5_Business_Logic
             return GetEnumerator();
         }
 
-        public void Park(T vehicle)
+        public void Add(T vehicle)
         {
             vehicles[numVehicles++] = vehicle;
         }
 
-        public void Drive(T vehicle)
+        public void Remove(T vehicle)
         {
-            var cars = vehicles.Where(x => x.LicensePlate.ToUpper() != vehicle.LicensePlate.ToUpper());
+            var cars = vehicles.Where(x => x?.LicensePlate.ToUpper() != vehicle.LicensePlate.ToUpper());
             vehicles = cars.ToArray();
 
             numVehicles--;
@@ -96,10 +99,10 @@ namespace Övning_5_Business_Logic
 
             return result;
         }
-      
+
         public IEnumerable<IGrouping<Type, T>> GroupByType()
         {
-            return vehicles.GroupBy(x => x?.GetType());
+            return vehicles.GroupBy(x => x?.GetType());                        
         }
     }
 }

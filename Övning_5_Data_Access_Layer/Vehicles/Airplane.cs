@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Business_Logic.Vehicles
+namespace Övning_5_Data_Access_Layer.Vehicles
 {
     public class Airplane : Vehicle
     {

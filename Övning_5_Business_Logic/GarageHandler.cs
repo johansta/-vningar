@@ -1,13 +1,15 @@
-﻿using Övning_5_Business_Logic;
-using Övning_5_Business_Logic.Vehicles;
+﻿using Övning_5_Data_Access_Layer;
+using Övning_5_Data_Access_Layer.Vehicles;
+using Övning_5_Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
-namespace Övning_5_Presentation_Logic
+namespace Övning_5_Business_Logic
 {
-    class GarageHandler
+    public class GarageHandler
     {
         private static GarageHandler instance;
 
@@ -26,7 +28,7 @@ namespace Övning_5_Presentation_Logic
             return GarageHandler.instance;
         }
 
-        public Gararge<Vehicle> Garage { get; set; }
+        public IGarageRepository<Vehicle> Garage { get; set; }
 
 
         public void SetCapacity(int capacity)
@@ -147,7 +149,7 @@ namespace Övning_5_Presentation_Logic
             foreach (var viechleType in viechleTypes)
             {
                 stringBuilder.Append(Environment.NewLine);
-                stringBuilder.Append("Vehicle Type: " + viechleType.Key.Name);
+                stringBuilder.Append("Vehicle Type: " + viechleType.Key);
                 stringBuilder.Append(Environment.NewLine);
                 stringBuilder.Append("Count: " + viechleType.Count());
                 stringBuilder.Append(Environment.NewLine);
@@ -162,28 +164,38 @@ namespace Övning_5_Presentation_Logic
         {
             bool validInput = false;
 
-            while (validInput)
+            while (!validInput)
             {
+                Console.WriteLine("Input license plate:");
                 String licensePlate = Console.ReadLine();
 
-                if (!String.IsNullOrWhiteSpace(licensePlate) && licensePlate.Length != 6)//Add regexp???
+                String pattern = @"[a-zA-Z]{3}\d{3}";
+                Regex regex = new Regex(pattern);
+
+                if(!String.IsNullOrWhiteSpace(licensePlate) && licensePlate.Length == 6 && regex.IsMatch(licensePlate) )
                 {
+                    validInput = true;
+
                     Vehicle vehicle = Garage.Find(licensePlate);
 
                     if (vehicle != null)
                     {
-                        Garage.Drive(vehicle);
+                        Garage.Remove(vehicle);
+
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine(Environment.NewLine + "Leaving vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
                     {
                         Console.WriteLine("No vehicle in the garage with licensePlate: " + licensePlate);
-                    }
-
-                    validInput = true;
+                    }                  
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Invalid input. Try again");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
             }
@@ -199,7 +211,7 @@ namespace Övning_5_Presentation_Logic
                 Console.WriteLine(Environment.NewLine + "Parking vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Garage.Park(vehicle); 
+                Garage.Add(vehicle); 
             }
         }
 
@@ -212,7 +224,7 @@ namespace Övning_5_Presentation_Logic
                 Console.WriteLine(Environment.NewLine + "Parking vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Garage.Park(vehicle); 
+                Garage.Add(vehicle); 
             }
         }
 
