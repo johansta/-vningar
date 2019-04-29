@@ -11,16 +11,18 @@ namespace Övning_5_Data_Access_Layer
     {
         public Gararge(int capacity)
         {
+            Capacity = capacity;
             vehicles = new T[capacity];
-            numVehicles = 0;
+            NumVehicles = 0;
         }
 
         private T[] vehicles;
-        public int numVehicles { get; private set; }
+        public int Capacity { get; private set; }
+        public int NumVehicles { get; private set; }
         
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < numVehicles; i++)
+            for (int i = 0; i < NumVehicles; i++)
             {
                 if (vehicles[i] != null)
                 {
@@ -36,7 +38,7 @@ namespace Övning_5_Data_Access_Layer
 
         public void Add(T vehicle)
         {
-            vehicles[numVehicles++] = vehicle;
+            vehicles[NumVehicles++] = vehicle;
         }
 
         public void Remove(T vehicle)
@@ -44,7 +46,17 @@ namespace Övning_5_Data_Access_Layer
             var cars = vehicles.Where(x => x?.LicensePlate.ToUpper() != vehicle.LicensePlate.ToUpper());
             vehicles = cars.ToArray();
 
-            numVehicles--;
+            NumVehicles--;
+        }
+
+        public void Clear()
+        {
+            for (int i = 0; i < NumVehicles; i++)
+            {
+                vehicles[i] = null;
+            }
+
+            NumVehicles = 0;
         }
 
         public T Find(String licensePlate)
@@ -56,7 +68,7 @@ namespace Övning_5_Data_Access_Layer
                     return false;
                 }
 
-                if (x.LicensePlate.ToUpper() == licensePlate.ToUpper())
+                if (x.LicensePlate.ToUpper().Equals(licensePlate.ToUpper()))
                 {
                     return true;
                 }

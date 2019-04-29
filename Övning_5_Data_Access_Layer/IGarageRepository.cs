@@ -8,6 +8,10 @@ namespace Övning_5_Data_Access_Layer
     {
         void Add(T vehicle);
         void Remove(T vehicle);
+        void Clear();
+
+        int Capacity { get; }
+        int NumVehicles { get; }
 
         T Find(String licensePlate);
         IEnumerable<T> Find(Dictionary<String, String> attributes);
