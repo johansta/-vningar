@@ -12,7 +12,7 @@ namespace Övning_5_Presentation_Logic
         {
             GarageHandler garageHandler = GarageHandler.GetInstance();
 
-            Queue<Övning_5_Data_Access_Layer.Vehicle> queue = garageHandler.GetTestData();
+            //Queue<Övning_5_Data_Access_Layer.Vehicle> queue = garageHandler.GetTestData();
             garageHandler.SetCapacity(20);
 
             UI ui = new UI(garageHandler);

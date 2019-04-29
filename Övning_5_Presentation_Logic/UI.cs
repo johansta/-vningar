@@ -13,14 +13,14 @@ namespace Övning_5_Presentation_Logic
     {      
         public UI(GarageHandler garageHandler)
         {
-            Queue<Vehicle> queue = garageHandler.GetTestData();
+            //Queue<Vehicle> queue = garageHandler.GetTestData();
 
             header = "Welcome to the garage application!";
 
             menuItems = new List<MenuItem>();
 
             menuItems.Add(new MenuItem('c', "create a garage with specific capacity", garageHandler.SetGarageCapacity));
-            menuItems.Add(new MenuItem('p', "park a viechle", () => garageHandler.Park(queue)));
+            menuItems.Add(new MenuItem('p', "park a viechle", () => garageHandler.Park()));
             menuItems.Add(new MenuItem('d', "drive viechle", garageHandler.Drive));
             menuItems.Add(new MenuItem('l', "list all viechles", garageHandler.ListVehicles));
             menuItems.Add(new MenuItem('g', "list all viechles by type and count each group", garageHandler.ListByVehicleType));

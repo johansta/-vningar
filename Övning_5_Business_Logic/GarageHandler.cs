@@ -36,23 +36,23 @@ namespace Övning_5_Business_Logic
             Garage = new Gararge<Vehicle>(capacity);
         }
 
-        public Queue<Vehicle> GetTestData()
+        /*public Queue<Vehicle> GetTestData()
         {
             Queue<Vehicle> queue = new Queue<Vehicle>();
 
             queue.Enqueue(new Car("ABC123", FuelType.GASOLINE));
             queue.Enqueue(new Car("EFG123",FuelType.DIESEL));
-            //queue.Enqueue(new Boat("HIJ123",3));
+            queue.Enqueue(new Boat("HIJ123",3));
             queue.Enqueue(new Boat("KLM123",2));
             queue.Enqueue(new Airplane("NOP123",100));
             queue.Enqueue(new Airplane("NOP456",42));
             queue.Enqueue(new Motorcycle("NOP789",true));
-            //queue.Enqueue(new Motorcycle("QRS123",false));
+            queue.Enqueue(new Motorcycle("QRS123",false));
             queue.Enqueue(new Bus("QRS456",66));
             queue.Enqueue(new Bus("QRS789", 90));
 
             return queue;
-        }
+        }*/
 
         public void FindVehicleByAttributes()
         {           

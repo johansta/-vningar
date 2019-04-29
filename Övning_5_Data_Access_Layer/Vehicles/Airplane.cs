@@ -19,5 +19,17 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         {
             return base.ToString() + Environment.NewLine + "NumberOfParachutes: " + NumberOfParachutes;
         }
+
+        public new static List<ParameterInfo> GetParameters()
+        {
+            ParameterInfo parameterInfo = new ParameterInfo();
+            parameterInfo.name = "NumberOfParachutes";
+            parameterInfo.type = typeof(int);
+
+            List<ParameterInfo> parameters = Vehicle.GetParameters();
+            parameters.Add(parameterInfo);
+
+            return parameters;
+        }
     }
 }

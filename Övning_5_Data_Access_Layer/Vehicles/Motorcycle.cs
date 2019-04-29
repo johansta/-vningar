@@ -19,5 +19,17 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         {
             return base.ToString() + Environment.NewLine + "Silencer: " + Silencer;
         }
+
+        public new static List<ParameterInfo> GetParameters()
+        {
+            ParameterInfo parameterInfo = new ParameterInfo();
+            parameterInfo.name = "Silencer";
+            parameterInfo.type = typeof(bool);
+
+            List<ParameterInfo> parameters = Vehicle.GetParameters();
+            parameters.Add(parameterInfo);
+
+            return parameters;
+        }
     }
 }

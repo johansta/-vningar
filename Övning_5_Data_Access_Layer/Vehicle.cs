@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace Övning_5_Data_Access_Layer
 {   
+    public struct ParameterInfo
+    {
+        public String name;
+        public Type type;
+    }
+
     public abstract class Vehicle
     {
+        /*public Vehicle()
+        {
+
+        }*/
+
         public Vehicle(String licensePlate)
         {
             LicensePlate = licensePlate;
@@ -27,6 +38,19 @@ namespace Övning_5_Data_Access_Layer
             return "LicensePlate: " + licensePlate + Environment.NewLine + "Viechle Type: " + this.GetType().Name;
         }
 
+        public static List<ParameterInfo> GetParameters()
+        {
+            ParameterInfo parameterInfo = new ParameterInfo();
+            parameterInfo.name = "LicensePlate";
+            parameterInfo.type = typeof(String);        
+
+            List<ParameterInfo> parameters = new List<ParameterInfo>();
+            parameters.Add(parameterInfo);
+
+            return parameters; 
+        }
+        
+        //Using reflection
         public Dictionary<String, String> GetProperties()
         {
             PropertyInfo[] props = GetType().GetProperties();

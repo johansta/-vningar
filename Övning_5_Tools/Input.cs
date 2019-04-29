@@ -10,6 +10,85 @@ namespace Övning_5_Tools
 {
     public class Input
     {
+        public static Vehicle InputVehicle2()
+        {
+            Console.Write(Environment.NewLine + "Choose vehicle type to park:");
+
+            foreach (VehicleType vehicleType in Enum.GetValues(typeof(VehicleType)))
+            {
+                Console.Write(Environment.NewLine + vehicleType);
+            }
+
+            int input = Console.Read();
+
+            while (!Enum.IsDefined(typeof(VehicleType), input))
+            {
+                Console.Write(Environment.NewLine + "Invalid option, try again:");
+                input = Console.Read();
+            }
+
+            VehicleType inputVehicleType = (VehicleType)input;
+
+            VehicleFactory vehicleFactory = new VehicleFactory();
+
+            List<ParameterInfo> parameters = vehicleFactory.GetParameters(inputVehicleType);
+
+            foreach (var param in parameters)
+            {
+                String input2 = Console.ReadLine();
+
+                //TryParse(input2, param);
+
+                /*while (parameters)
+                {
+                    Console.Write(Environment.NewLine + "Invalid option, try again:");
+                    input = Console.Read();
+                }*/
+            }
+
+            return vehicleFactory.GetVehicle(inputVehicleType);
+
+            
+        }
+
+        /*private static bool TryParse(String input, ParameterInfo param, out Object output)
+        {
+            if (param.type is Int32)
+            {
+                if (Int32.TryParse(input, out int result))
+                {
+                    output = result;
+                    return true;
+                }
+
+            }
+            else if (param.type is bool)
+            {
+                if (bool.TryParse(input, out bool result))
+                {
+                    output = result;
+                    return true;
+                }
+            }
+            else if (param.type is FuelType)
+            {
+                if (Enum.TryParse(input, out FuelType result))
+                {
+                    output = result;
+                    return true;
+                }
+            }
+            else if (param.type is String)
+            {
+                output = input;
+                return true;
+            }
+
+            output = null;
+            return false;
+        }*/
+
+        //Using reflection
         public static Vehicle InputVehicle()
         {
             Dictionary<String, object> paramDictionary = new Dictionary<String, object>();

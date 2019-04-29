@@ -25,5 +25,17 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         {
             return base.ToString() + Environment.NewLine + "FuelType: " + FuelType;
         }
+
+        public new static List<ParameterInfo> GetParameters()
+        {
+            ParameterInfo parameterInfo = new ParameterInfo();
+            parameterInfo.name = "FuelType";
+            parameterInfo.type = typeof(FuelType);
+
+            List<ParameterInfo> parameters = Vehicle.GetParameters();
+            parameters.Add(parameterInfo);
+
+            return parameters;
+        }
     }
 }
