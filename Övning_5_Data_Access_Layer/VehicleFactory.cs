@@ -18,23 +18,23 @@ namespace Övning_5_Data_Access_Layer
 
     public class VehicleFactory
     {
-        public Vehicle GetVehicle(VehicleType vehicleType)
+        public Vehicle GetVehicle(VehicleType vehicleType, List<ParameterInfo> parameterInfo)
         {
-            /*switch (vehicleType)
+            switch (vehicleType)
             {
                 case VehicleType.AIRPLANE:
-                    return new Airplane();
+                    return new Airplane((String)parameterInfo[0].value, (int)parameterInfo[1].value);
                 case VehicleType.BOAT:
-                    return new Boat();
+                    return new Boat((String)parameterInfo[0].value, (int)parameterInfo[1].value);
                 case VehicleType.BUS:
-                    return new Bus();
+                    return new Bus((String)parameterInfo[0].value, (int)parameterInfo[1].value);
                 case VehicleType.CAR:
-                    return new Car();
+                    return new Car((String)parameterInfo[0].value, (FuelType)parameterInfo[1].value);
                 case VehicleType.MOTORCYLE:
-                    return new Motorcycle();
+                    return new Motorcycle((String)parameterInfo[0].value, (bool)parameterInfo[1].value);
                 default:
                     throw new NotSupportedException();
-            }*/
+            }
 
             return null;
         }

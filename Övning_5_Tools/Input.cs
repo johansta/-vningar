@@ -12,81 +12,48 @@ namespace Övning_5_Tools
     {
         public static Vehicle InputVehicle2()
         {
-            Console.Write(Environment.NewLine + "Choose vehicle type to park:");
-
+            Console.WriteLine(Environment.NewLine + "Vehicle types" + Environment.NewLine);
+           
             foreach (VehicleType vehicleType in Enum.GetValues(typeof(VehicleType)))
             {
-                Console.Write(Environment.NewLine + vehicleType);
+                Console.WriteLine((int)vehicleType + " " + vehicleType);
             }
 
-            int input = Console.Read();
+            Console.Write(Environment.NewLine + "Input integer:");
 
-            while (!Enum.IsDefined(typeof(VehicleType), input))
+            int inputEnum = Console.ReadLine()[0] - 48;
+
+            while (!Enum.IsDefined(typeof(VehicleType), inputEnum))
             {
                 Console.Write(Environment.NewLine + "Invalid option, try again:");
-                input = Console.Read();
+                inputEnum = Console.ReadLine()[0] - 48;
             }
 
-            VehicleType inputVehicleType = (VehicleType)input;
-
+            VehicleType inputVehicleType = (VehicleType)inputEnum;
             VehicleFactory vehicleFactory = new VehicleFactory();
 
             List<ParameterInfo> parameters = vehicleFactory.GetParameters(inputVehicleType);
 
-            foreach (var param in parameters)
+            for(int i = 0; i < parameters.Count; i++)
             {
-                String input2 = Console.ReadLine();
+                ParameterInfo param = parameters[i];
 
-                //TryParse(input2, param);
+                //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
+                ConsoleWrapper.Write(Environment.NewLine + "Input value of parameter {0} of type {1}:", 
+                    new object[] { param.name, param.type.Name }, 
+                    new ConsoleColor[] { ConsoleColor.DarkBlue, ConsoleColor.DarkRed });
 
-                /*while (parameters)
-                {
+                String inputArgument = Console.ReadLine();
+          
+                while (!param.tryParse(inputArgument, out param.value))
+                {                                  
                     Console.Write(Environment.NewLine + "Invalid option, try again:");
-                    input = Console.Read();
-                }*/
+                    inputArgument = Console.ReadLine();
+                }
             }
 
-            return vehicleFactory.GetVehicle(inputVehicleType);
-
-            
+            return vehicleFactory.GetVehicle(inputVehicleType, parameters);        
         }
-
-        /*private static bool TryParse(String input, ParameterInfo param, out Object output)
-        {
-            if (param.type is Int32)
-            {
-                if (Int32.TryParse(input, out int result))
-                {
-                    output = result;
-                    return true;
-                }
-
-            }
-            else if (param.type is bool)
-            {
-                if (bool.TryParse(input, out bool result))
-                {
-                    output = result;
-                    return true;
-                }
-            }
-            else if (param.type is FuelType)
-            {
-                if (Enum.TryParse(input, out FuelType result))
-                {
-                    output = result;
-                    return true;
-                }
-            }
-            else if (param.type is String)
-            {
-                output = input;
-                return true;
-            }
-
-            output = null;
-            return false;
-        }*/
 
         //Using reflection
         public static Vehicle InputVehicle()

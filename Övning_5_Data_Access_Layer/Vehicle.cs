@@ -6,11 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Övning_5_Data_Access_Layer
-{   
+{
+
+    public delegate bool TryParse(string s, out object result);
+   
     public struct ParameterInfo
     {
         public String name;
         public Type type;
+        public TryParse tryParse;
+        public Object value;
     }
 
     public abstract class Vehicle
@@ -42,7 +47,12 @@ namespace Övning_5_Data_Access_Layer
         {
             ParameterInfo parameterInfo = new ParameterInfo();
             parameterInfo.name = "LicensePlate";
-            parameterInfo.type = typeof(String);        
+            parameterInfo.type = typeof(String);
+
+            parameterInfo.tryParse = (string s, out object r) => {                           
+                r = s;
+                return true;
+            };
 
             List<ParameterInfo> parameters = new List<ParameterInfo>();
             parameters.Add(parameterInfo);

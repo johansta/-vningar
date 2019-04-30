@@ -26,6 +26,13 @@ namespace Övning_5_Data_Access_Layer.Vehicles
             parameterInfo.name = "NumberOfSeats";
             parameterInfo.type = typeof(int);
 
+            parameterInfo.tryParse = (string s, out object r) => {
+
+                bool result = Int32.TryParse(s, out int v);
+                r = v;
+                return result;
+            };
+
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);
 

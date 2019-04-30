@@ -31,6 +31,13 @@ namespace Övning_5_Data_Access_Layer.Vehicles
             ParameterInfo parameterInfo = new ParameterInfo();
             parameterInfo.name = "FuelType";
             parameterInfo.type = typeof(FuelType);
+         
+            parameterInfo.tryParse = (string s, out object r) => {
+
+                bool result = Enum.TryParse(s, out FuelType v);
+                r = v;
+                return result;
+            };
 
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);

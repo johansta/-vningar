@@ -26,6 +26,13 @@ namespace Övning_5_Data_Access_Layer.Vehicles
             parameterInfo.name = "Silencer";
             parameterInfo.type = typeof(bool);
 
+            parameterInfo.tryParse = (string s, out object r) => {
+
+                bool result = bool.TryParse(s, out bool v);
+                r = v;
+                return result;
+            };
+
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);
 

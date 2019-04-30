@@ -203,7 +203,7 @@ namespace Övning_5_Business_Logic
         
         public void Park()
         {
-            Vehicle vehicle = Input.InputVehicle();
+            Vehicle vehicle = Input.InputVehicle2();//Input.InputVehicle();
 
             if (vehicle != null)          
             {               
