@@ -36,7 +36,7 @@ namespace Övning_5_Tools
 
             for(int i = 0; i < parameters.Count; i++)
             {
-                ParameterInfo param = parameters[i];
+                ParameterInfo param = parameters[i];      
 
                 //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
                 ConsoleWrapper.Write(Environment.NewLine + "Input value of parameter {0} of type {1}:", 

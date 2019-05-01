@@ -12,7 +12,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
 
         public Airplane(String licence, int numberOfParachutes) : base(licence)
         {
-            NumberOfParachutes = NumberOfParachutes;
+            NumberOfParachutes = numberOfParachutes;
         }
 
         public override String ToString()
