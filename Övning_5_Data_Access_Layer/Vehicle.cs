@@ -10,7 +10,7 @@ namespace Övning_5_Data_Access_Layer
 
     public delegate bool TryParse(string s, out object result);
    
-    public struct ParameterInfo
+    public class ParameterInfo
     {
         public String name;
         public Type type;

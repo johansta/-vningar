@@ -20,23 +20,23 @@ namespace Övning_5_Data_Access_Layer
     {
         public Vehicle GetVehicle(VehicleType vehicleType, List<ParameterInfo> parameterInfo)
         {
+            String licence = (String)parameterInfo[0].value;
+
             switch (vehicleType)
             {
                 case VehicleType.AIRPLANE:
-                    return new Airplane((String)parameterInfo[0].value, (int)parameterInfo[1].value);
+                    return new Airplane(licence, numberOfParachutes: (int)parameterInfo[1].value);
                 case VehicleType.BOAT:
-                    return new Boat((String)parameterInfo[0].value, (int)parameterInfo[1].value);
+                    return new Boat(licence, numberOfEngines:(int)parameterInfo[1].value);
                 case VehicleType.BUS:
-                    return new Bus((String)parameterInfo[0].value, (int)parameterInfo[1].value);
+                    return new Bus(licence, numberOfSeats:(int)parameterInfo[1].value);
                 case VehicleType.CAR:
-                    return new Car((String)parameterInfo[0].value, (FuelType)parameterInfo[1].value);
+                    return new Car(licence, fuelType:(FuelType)parameterInfo[1].value);
                 case VehicleType.MOTORCYLE:
-                    return new Motorcycle((String)parameterInfo[0].value, (bool)parameterInfo[1].value);
+                    return new Motorcycle(licence, silencer:(bool)parameterInfo[1].value);
                 default:
                     throw new NotSupportedException();
             }
-
-            return null;
         }
 
         public List<ParameterInfo> GetParameters(VehicleType vehicleType)
