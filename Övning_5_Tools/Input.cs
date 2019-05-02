@@ -19,12 +19,17 @@ namespace Övning_5_Tools
            
             foreach (VehicleType vehicleType in Enum.GetValues(typeof(VehicleType)))
             {
-                Console.WriteLine((int)vehicleType + " " + vehicleType);
+                //Console.WriteLine((int)vehicleType + " " + vehicleType);
+
+                ConsoleWrapper.WriteLine("{0} -> {1}",
+                   new object[] { (int)vehicleType, vehicleType },
+                   new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White });
+
             }
 
             Console.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Integer") + ":");
 
-            int inputEnum = Console.ReadLine()[0] - 48;
+            int inputEnum = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
 
             while (!Enum.IsDefined(typeof(VehicleType), inputEnum))
             {
@@ -44,14 +49,14 @@ namespace Övning_5_Tools
                 //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
                 ConsoleWrapper.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Parameter") + ":",
                     new object[] { param.name, param.type.Name }, 
-                    new ConsoleColor[] { ConsoleColor.DarkBlue, ConsoleColor.DarkRed });
+                    new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.Green });
 
-                String inputArgument = Console.ReadLine();
+                String inputArgument = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
           
                 while (!param.tryParse(inputArgument, out param.value))
                 {                                  
                     Console.Write(Environment.NewLine + ResourceManager.GetString("Invalid_Option"));
-                    inputArgument = Console.ReadLine();
+                    inputArgument = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
                 }
             }
 
@@ -59,7 +64,7 @@ namespace Övning_5_Tools
         }
 
         //Using reflection
-        public static Vehicle InputVehicle()
+        /*public static Vehicle InputVehicle()
         {
             Dictionary<String, object> paramDictionary = new Dictionary<String, object>();
 
@@ -134,7 +139,7 @@ namespace Övning_5_Tools
             Vehicle instance = (Vehicle)ctor.Invoke(paramDictionary.Values.ToArray());
 
             return instance;
-        }
+        }*/
 
         public static String InputLicense()
         {           

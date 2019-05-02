@@ -13,10 +13,12 @@ using static System.Console;
 
 namespace Övning_5_Presentation_Logic
 {
-    public class UI
+    public class UserInterface
     {      
-        public UI(ResourceManager resourceManager, GarageHandler garageHandler)
+        public UserInterface(ResourceManager resourceManager, GarageHandler garageHandler)
         {
+            ResourceManager = resourceManager;
+
             header = resourceManager.GetString("Menu_Header");
 
             menuItems = new List<MenuItem>();
@@ -31,31 +33,16 @@ namespace Övning_5_Presentation_Logic
             menuItems.Add(new MenuItem('q', resourceManager.GetString("Menu_Exit"), () => { return; }));
         }
 
-        private class MenuItem
-        {
-            public MenuItem(char command,String info, Action action)
-            {
-                Command = command;
-                Description = info;
-                Action = action;
-            }
-
-            public char Command { get; set; }
-            public String Description { get; set; }
-            public Action Action { get; set; }
-
-            public override string ToString()
-            {
-                return Command + ": " + Description; 
-            }
-        }
-
+        public ResourceManager ResourceManager { get; private set; }
         private String header;
         private List<MenuItem> menuItems; 
 
-        public void PrintMainMenu()
+        public void PrintMainMenu(bool header = false)
         {
-            WriteLine(header + Environment.NewLine);
+            if (header)
+            {
+                WriteLine(header);
+            }
 
             foreach(var menuItem in menuItems)
             {
@@ -78,6 +65,36 @@ namespace Övning_5_Presentation_Logic
             }
                                 
             return false;
+        }
+
+        public void Run()
+        {
+            PrintMainMenu(true);
+
+            while (true)
+            {
+                ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Command") + " ", 2);
+
+                String input = ConsoleWrapper.ReadLine(ConsoleColor.Green);
+
+                bool success = false;
+
+                if (!String.IsNullOrWhiteSpace(input) && input.Length == 1)
+                {
+                    char command = input[0];
+
+                    if (RunMenuAction(command))
+                    {
+                        success = true;
+                        PrintMainMenu();
+                    }
+                }
+
+                if (!success)
+                {
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Invalid_Command"), ConsoleColor.Red);
+                }
+            }
         }
     }
 }

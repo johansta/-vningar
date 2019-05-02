@@ -118,69 +118,99 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Airplane_NumberOfParachutes" xml:space="preserve">
-    <value>Antal fallskärmar</value>
+    <value>Number of parachutes</value>
   </data>
   <data name="Boat_NumberOfEngines" xml:space="preserve">
-    <value>Antal motorer</value>
+    <value>Number of engines</value>
   </data>
   <data name="Bus_NumberOfSeats" xml:space="preserve">
-    <value>Antal säten</value>
+    <value>Number of seats</value>
+  </data>
+  <data name="Capacity_Failed_Validation" xml:space="preserve">
+    <value>Capacity failed validation, try again!</value>
   </data>
   <data name="Car_FuelType" xml:space="preserve">
-    <value>Bränsletyp</value>
+    <value>Fuel type</value>
+  </data>
+  <data name="Empty_Garage" xml:space="preserve">
+    <value>The garage is empty</value>
   </data>
   <data name="Input_Command" xml:space="preserve">
-    <value>Mata in kommando:</value>
+    <value>Input_Command:</value>
+  </data>
+  <data name="Input_License_Number" xml:space="preserve">
+    <value>Input license number</value>
   </data>
   <data name="Invalid_Command" xml:space="preserve">
-    <value>Felaktigt commando, försök igen!</value>
+    <value>Invalid command, try again!</value>
+  </data>
+  <data name="Invalid_Input" xml:space="preserve">
+    <value>Invalid_Input, try again!</value>
   </data>
   <data name="Invalid_Option" xml:space="preserve">
-    <value>Fel alternativ, försök igen!</value>
+    <value>Invalid option, try again!</value>
+  </data>
+  <data name="Leaving_Vehicle" xml:space="preserve">
+    <value>Vehicle that is leaving the garage</value>
   </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
-    <value>Skapa ett garage</value>
+    <value>Create a garage with specific capacity</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Kör fordon</value>
+    <value>Drive a vehicle</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
-    <value>Avsluta program</value>
+    <value>Exit application</value>
   </data>
   <data name="Menu_Group_Vehicles" xml:space="preserve">
-    <value>Gruppera fordon</value>
+    <value>Group vehicles</value>
   </data>
   <data name="Menu_Header" xml:space="preserve">
-    <value>Välkommen till garage Liljeholmen!</value>
+    <value>Welcome to garage Liljeholmen!</value>
+  </data>
+  <data name="Menu_Input_Capacity" xml:space="preserve">
+    <value>Input capacity</value>
   </data>
   <data name="Menu_Input_Integer" xml:space="preserve">
-    <value>Mata in ett heltal</value>
+    <value>Input integer</value>
   </data>
   <data name="Menu_Input_Parameter" xml:space="preserve">
-    <value>Mata in värdet för parameter {0} av typen {1}</value>
+    <value>Input value of parameter {0} of type {1}</value>
   </data>
   <data name="Menu_List_Vehicles" xml:space="preserve">
-    <value>Lista fordon</value>
+    <value>List vehicles</value>
   </data>
   <data name="Menu_Park_Vehicle" xml:space="preserve">
-    <value>Parkera fordon</value>
+    <value>Park a vehicle</value>
   </data>
   <data name="Menu_Search_Attribute" xml:space="preserve">
-    <value>Sök med attribut</value>
+    <value>Search by attribute</value>
   </data>
   <data name="Menu_Search_License" xml:space="preserve">
-    <value>Sök med registeringsnummer</value>
+    <value>Search by license number</value>
   </data>
   <data name="Menu_Vehicle_Types" xml:space="preserve">
-    <value>Fordonstyper</value>
+    <value>Vehicle types</value>
   </data>
   <data name="Motorcycle_Silencer" xml:space="preserve">
-    <value>Ljuddämpare</value>
+    <value>Silencer</value>
+  </data>
+  <data name="Parking_Vehicle" xml:space="preserve">
+    <value>Parking vehicle</value>
+  </data>
+  <data name="Search_Failed" xml:space="preserve">
+    <value>Could not find any vehicles with the license plate</value>
+  </data>
+  <data name="Search_License_Not_Found" xml:space="preserve">
+    <value>No vehicle in the garage with license number</value>
+  </data>
+  <data name="Vehicle_Count" xml:space="preserve">
+    <value>Vehicle count</value>
   </data>
   <data name="Vehicle_License_Plate" xml:space="preserve">
-    <value>Registeringskylt</value>
+    <value>License plate</value>
   </data>
   <data name="Vehicle_Type" xml:space="preserve">
-    <value>Fordons typ</value>
+    <value>Vehicle type</value>
   </data>
 </root>

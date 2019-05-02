@@ -47,16 +47,6 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Resources.en.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.en.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Resources.se.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.se.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Övning_5_Business_Logic\Business Logic.csproj">
@@ -67,6 +57,10 @@
       <Project>{e168c005-5ef9-4932-b239-281d096f9842}</Project>
       <Name>Presentation Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Övning_5_Resources\Resources.csproj">
+      <Project>{2cf125a9-6d31-4c88-8051-91fa698bb17b}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Övning_5_Tools\Tools.csproj">
       <Project>{a4230a9c-749a-4ddf-a72d-75e09470d024}</Project>
       <Name>Tools</Name>
@@ -74,16 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Resources.en.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Resources.se.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.se.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
