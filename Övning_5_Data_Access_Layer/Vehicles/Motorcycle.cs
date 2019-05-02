@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,14 +11,14 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public bool Silencer { get; set; }
 
-        public Motorcycle(String licence, bool silencer) : base(licence)
+        public Motorcycle(ResourceManager resourceManager, String licence, bool silencer) : base(resourceManager, licence)
         {
             Silencer = silencer;
         }
 
         public override String ToString()
         {
-            return base.ToString() + Environment.NewLine + "Silencer: " + Silencer;
+            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Motorcycle_Silencer") + ": " + Silencer;
         }
 
         public new static List<ParameterInfo> GetParameters()

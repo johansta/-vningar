@@ -1,4 +1,8 @@
-﻿using Övning_5_Business_Logic;
+﻿using System.Resources;
+
+using Övning_5_Tools;
+
+using Övning_5_Business_Logic;
 using Övning_5_Data_Access_Layer;
 using System;
 using System.Collections.Generic;
@@ -9,24 +13,22 @@ using static System.Console;
 
 namespace Övning_5_Presentation_Logic
 {
-    class UI
+    public class UI
     {      
-        public UI(GarageHandler garageHandler)
+        public UI(ResourceManager resourceManager, GarageHandler garageHandler)
         {
-            //Queue<Vehicle> queue = garageHandler.GetTestData();
-
-            header = "Welcome to the garage application!";
+            header = resourceManager.GetString("Menu_Header");
 
             menuItems = new List<MenuItem>();
 
-            menuItems.Add(new MenuItem('c', "create a garage with specific capacity", garageHandler.SetGarageCapacity));
-            menuItems.Add(new MenuItem('p', "park a viechle", () => garageHandler.Park()));
-            menuItems.Add(new MenuItem('d', "drive viechle", garageHandler.Drive));
-            menuItems.Add(new MenuItem('l', "list all viechles", garageHandler.ListVehicles));
-            menuItems.Add(new MenuItem('g', "list all viechles by type and count each group", garageHandler.ListByVehicleType));
-            menuItems.Add(new MenuItem('f', "find a car by licence number", garageHandler.FindVehicleByLicense));
-            menuItems.Add(new MenuItem('a', "find a car by custom attribute", garageHandler.FindVehicleByAttributes));
-            menuItems.Add(new MenuItem('q', "exit application", () => { return; }));
+            menuItems.Add(new MenuItem('c', resourceManager.GetString("Menu_Create_Garage") , garageHandler.SetGarageCapacity));
+            menuItems.Add(new MenuItem('p', resourceManager.GetString("Menu_Park_Vehicle"), () => garageHandler.Park()));
+            menuItems.Add(new MenuItem('d', resourceManager.GetString("Menu_Drive_Vehicle"), garageHandler.Drive));
+            menuItems.Add(new MenuItem('l', resourceManager.GetString("Menu_List_Vehicles"), garageHandler.ListVehicles));
+            menuItems.Add(new MenuItem('g', resourceManager.GetString("Menu_Group_Vehicles"), garageHandler.ListByVehicleType));
+            menuItems.Add(new MenuItem('s', resourceManager.GetString("Menu_Search_License"), garageHandler.FindVehicleByLicense));
+            menuItems.Add(new MenuItem('a', resourceManager.GetString("Menu_Search_Attribute"), garageHandler.FindVehicleByAttributes));
+            menuItems.Add(new MenuItem('q', resourceManager.GetString("Menu_Exit"), () => { return; }));
         }
 
         private class MenuItem
@@ -44,7 +46,7 @@ namespace Övning_5_Presentation_Logic
 
             public override string ToString()
             {
-                return "Press " + Command + " to " + Description; 
+                return Command + ": " + Description; 
             }
         }
 
@@ -57,7 +59,9 @@ namespace Övning_5_Presentation_Logic
 
             foreach(var menuItem in menuItems)
             {
-                WriteLine(menuItem);
+                ConsoleWrapper.Write(Environment.NewLine + "{0} -> {1}",
+                   new object[] { menuItem.Command, menuItem.Description },
+                   new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White});
             }         
         }
 

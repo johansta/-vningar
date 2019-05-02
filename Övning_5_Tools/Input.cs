@@ -3,6 +3,7 @@ using Övning_5_Data_Access_Layer.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,27 +11,29 @@ namespace Övning_5_Tools
 {
     public class Input
     {
+        public static ResourceManager ResourceManager { get; set; }
+
         public static Vehicle InputVehicle2()
         {
-            Console.WriteLine(Environment.NewLine + "Vehicle types" + Environment.NewLine);
+            Console.WriteLine(Environment.NewLine + ResourceManager.GetString("Menu_Vehicle_Types") + Environment.NewLine);
            
             foreach (VehicleType vehicleType in Enum.GetValues(typeof(VehicleType)))
             {
                 Console.WriteLine((int)vehicleType + " " + vehicleType);
             }
 
-            Console.Write(Environment.NewLine + "Input integer:");
+            Console.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Integer") + ":");
 
             int inputEnum = Console.ReadLine()[0] - 48;
 
             while (!Enum.IsDefined(typeof(VehicleType), inputEnum))
             {
-                Console.Write(Environment.NewLine + "Invalid option, try again:");
+                Console.Write(Environment.NewLine + ResourceManager.GetString("Invalid_Option"));
                 inputEnum = Console.ReadLine()[0] - 48;
             }
 
             VehicleType inputVehicleType = (VehicleType)inputEnum;
-            VehicleFactory vehicleFactory = new VehicleFactory();
+            VehicleFactory vehicleFactory = new VehicleFactory(ResourceManager);
 
             List<ParameterInfo> parameters = vehicleFactory.GetParameters(inputVehicleType);
 
@@ -39,7 +42,7 @@ namespace Övning_5_Tools
                 ParameterInfo param = parameters[i];
 
                 //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
-                ConsoleWrapper.Write(Environment.NewLine + "Input value of parameter {0} of type {1}:", 
+                ConsoleWrapper.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Parameter") + ":",
                     new object[] { param.name, param.type.Name }, 
                     new ConsoleColor[] { ConsoleColor.DarkBlue, ConsoleColor.DarkRed });
 
@@ -47,7 +50,7 @@ namespace Övning_5_Tools
           
                 while (!param.tryParse(inputArgument, out param.value))
                 {                                  
-                    Console.Write(Environment.NewLine + "Invalid option, try again:");
+                    Console.Write(Environment.NewLine + ResourceManager.GetString("Invalid_Option"));
                     inputArgument = Console.ReadLine();
                 }
             }

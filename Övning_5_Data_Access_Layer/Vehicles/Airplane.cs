@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,14 +11,14 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public int NumberOfParachutes { get; set; }
 
-        public Airplane(String licence, int numberOfParachutes) : base(licence)
+        public Airplane(ResourceManager resourceManager, String licence, int numberOfParachutes) : base(resourceManager, licence)
         {
             NumberOfParachutes = numberOfParachutes;
         }
 
         public override String ToString()
         {
-            return base.ToString() + Environment.NewLine + "NumberOfParachutes: " + NumberOfParachutes;
+            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Airplane_NumberOfParachutes") + ": " + NumberOfParachutes;
         }
 
         public new static List<ParameterInfo> GetParameters()

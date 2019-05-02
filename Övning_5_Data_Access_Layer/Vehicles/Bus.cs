@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,14 +11,14 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public int NumberOfSeats { get; set; }
 
-        public Bus(String licence, int numberOfSeats) : base(licence)
+        public Bus(ResourceManager resourceManager, String licence, int numberOfSeats) : base(resourceManager, licence)
         {
             NumberOfSeats = numberOfSeats;
         }
 
         public override String ToString()
         {
-            return base.ToString() + Environment.NewLine + "NumberOfSeats: " + NumberOfSeats;
+            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Bus_NumberOfSeats") + ": " + NumberOfSeats;
         }
      
         public new static List<ParameterInfo> GetParameters()

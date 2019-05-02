@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,10 +26,13 @@ namespace Övning_5_Data_Access_Layer
 
         }*/
 
-        public Vehicle(String licensePlate)
+        public Vehicle(ResourceManager resourceManager, String licensePlate)
         {
+            ResourceManager = resourceManager;
             LicensePlate = licensePlate;
         }
+
+        public ResourceManager ResourceManager { get; private set; }
 
         private String licensePlate;
 
@@ -40,7 +44,7 @@ namespace Övning_5_Data_Access_Layer
 
         public override String ToString()
         {
-            return "LicensePlate: " + licensePlate + Environment.NewLine + "Viechle Type: " + this.GetType().Name;
+            return ResourceManager.GetString("Vehicle_License_Plate") + ": " + licensePlate + Environment.NewLine + ResourceManager.GetString("Vehicle_Type") + ": " + this.GetType().Name;
         }
 
         public static List<ParameterInfo> GetParameters()

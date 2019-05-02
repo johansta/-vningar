@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Text;
 
 namespace Övning_5_Tools
 {
-    static class ConsoleWrapper
+    public static class ConsoleWrapper
     {
         public static void Write(string sentence, object[] parameters, ConsoleColor[] parameterColors, ConsoleColor @default = ConsoleColor.White)
         {
@@ -36,6 +37,61 @@ namespace Övning_5_Tools
 
             Console.ForegroundColor = @default;
             Console.Write(sentence);
-        }        
+        }
+
+        public static void WritePreLine(string sentence, int newLineCount = 1)
+        {
+            if (newLineCount < 0)
+            {
+                newLineCount = 0;
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < newLineCount; i++)
+            {
+                stringBuilder.AppendLine();
+            }
+
+            stringBuilder.Append(sentence);
+
+            Console.Write(stringBuilder);
+
+        }
+
+        public static void WritePostLine(string sentence, int postLineCount = 1)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+           
+            stringBuilder.Append(sentence);
+
+            for (int i = 0; i < postLineCount; i++)
+            {
+                stringBuilder.AppendLine();
+            }
+
+            Console.Write(stringBuilder);
+
+        }
+
+        public static void WritePreLinePostLine(string sentence, int preLineCount = 1, int postLineCount = 1)
+        {           
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < preLineCount; i++)
+            {
+                stringBuilder.AppendLine();
+            }
+
+            stringBuilder.Append(sentence);
+
+            for (int i = 0; i < postLineCount; i++)
+            {
+                stringBuilder.AppendLine();
+            }
+
+            Console.Write(stringBuilder);
+
+        }
     }
 }
