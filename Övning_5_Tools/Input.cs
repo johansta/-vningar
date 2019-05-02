@@ -47,9 +47,9 @@ namespace Övning_5_Tools
                 ParameterInfo param = parameters[i];
 
                 //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
-                ConsoleWrapper.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Parameter") + ":",
+                ConsoleWrapper.WriteLine(Environment.NewLine + ResourceManager.GetString("Menu_Input_Parameter") + ":",
                     new object[] { param.name, param.type.Name }, 
-                    new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.Green });
+                    new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.Yellow });
 
                 String inputArgument = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
           
