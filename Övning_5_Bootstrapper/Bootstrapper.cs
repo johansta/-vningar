@@ -1,13 +1,13 @@
 ﻿using System.Globalization;
 using System.Resources;
-
-using Övning_5_Business_Logic;
-using Övning_5_Presentation_Logic;
-using System;
 using System.Configuration;
 using System.Threading;
-using Övning_5_Tools;
 using System.Reflection;
+
+using Övning_5_Tools;
+using Övning_5_Business_Logic;
+using Övning_5_Presentation_Logic;
+using Övning_5_Presentation_Logic.UserInterfaces;
 
 namespace Övning_5_Bootstrapper
 {
@@ -31,10 +31,11 @@ namespace Övning_5_Bootstrapper
             setupResources();
 
             Input.ResourceManager = resourceManager;
-            GarageHandler garageHandler = GarageHandler.GetInstance(resourceManager);       
-            UserInterface userInterface = new UserInterface(resourceManager, garageHandler);
-
-            userInterface.Run();        
+            GarageHandler garageHandler = GarageHandler.GetInstance(resourceManager);
+            
+            UserInterface mainMenu = new MainMenu(resourceManager, garageHandler);
+            mainMenu.Run();   
+            
         }
 
         

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Övning_5_Presentation_Logic
 {
-    class MenuItem
+    public class MenuItem
     {
-        public MenuItem(char command, String info, Action action)
+        internal MenuItem(char command, String info, Action action)
         {
             Command = command;
             Description = info;

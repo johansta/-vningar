@@ -13,33 +13,21 @@ using static System.Console;
 
 namespace Övning_5_Presentation_Logic
 {
-    public class UserInterface
-    {      
-        public UserInterface(ResourceManager resourceManager, GarageHandler garageHandler)
+    public abstract class UserInterface
+    {
+        protected UserInterface(ResourceManager resourceManager)
         {
             ResourceManager = resourceManager;
-
-            header = resourceManager.GetString("Menu_Header");
-
-            menuItems = new List<MenuItem>();
-
-            menuItems.Add(new MenuItem('c', resourceManager.GetString("Menu_Create_Garage") , garageHandler.SetGarageCapacity));
-            menuItems.Add(new MenuItem('p', resourceManager.GetString("Menu_Park_Vehicle"), () => garageHandler.Park()));
-            menuItems.Add(new MenuItem('d', resourceManager.GetString("Menu_Drive_Vehicle"), garageHandler.Drive));
-            menuItems.Add(new MenuItem('l', resourceManager.GetString("Menu_List_Vehicles"), garageHandler.ListVehicles));
-            menuItems.Add(new MenuItem('g', resourceManager.GetString("Menu_Group_Vehicles"), garageHandler.ListByVehicleType));
-            menuItems.Add(new MenuItem('s', resourceManager.GetString("Menu_Search_License"), garageHandler.FindVehicleByLicense));
-            menuItems.Add(new MenuItem('a', resourceManager.GetString("Menu_Search_Attribute"), garageHandler.FindVehicleByAttributes));
-            menuItems.Add(new MenuItem('q', resourceManager.GetString("Menu_Exit"), () => { return; }));
         }
 
-        public ResourceManager ResourceManager { get; private set; }
-        private String header;
-        private List<MenuItem> menuItems; 
+        public ResourceManager ResourceManager { get; protected set; }
+        protected String header;
+        protected List<MenuItem> menuItems;
+        private bool running;
 
-        public void PrintMainMenu(bool header = false)
+        public void PrintMenu(bool printHeader = false)
         {
-            if (header)
+            if (printHeader && this.header != null)
             {
                 WriteLine(header);
             }
@@ -69,9 +57,11 @@ namespace Övning_5_Presentation_Logic
 
         public void Run()
         {
-            PrintMainMenu(true);
+            PrintMenu(true);
 
-            while (true)
+            running = true;
+
+            while (running)
             {
                 ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Command") + " ", 2);
 
@@ -86,7 +76,7 @@ namespace Övning_5_Presentation_Logic
                     if (RunMenuAction(command))
                     {
                         success = true;
-                        PrintMainMenu();
+                        PrintMenu();
                     }
                 }
 
@@ -95,6 +85,11 @@ namespace Övning_5_Presentation_Logic
                     ConsoleWrapper.WritePreLine(ResourceManager.GetString("Invalid_Command"), ConsoleColor.Red);
                 }
             }
+        }
+
+        protected void Exit()
+        {
+            running = false;
         }
     }
 }

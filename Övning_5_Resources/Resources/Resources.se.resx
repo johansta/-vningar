@@ -135,6 +135,30 @@
   <data name="Empty_Garage" xml:space="preserve">
     <value>Gararget är tomt!</value>
   </data>
+  <data name="Help_Blue" xml:space="preserve">
+    <value>Blå</value>
+  </data>
+  <data name="Help_Blue_Description" xml:space="preserve">
+    <value>Argument</value>
+  </data>
+  <data name="Help_Green" xml:space="preserve">
+    <value>Grön</value>
+  </data>
+  <data name="Help_Green_Description" xml:space="preserve">
+    <value>Kommandon</value>
+  </data>
+  <data name="Help_Red" xml:space="preserve">
+    <value>Röd</value>
+  </data>
+  <data name="Help_Red_Description" xml:space="preserve">
+    <value>Användarfel</value>
+  </data>
+  <data name="Help_Yellow" xml:space="preserve">
+    <value>Gul</value>
+  </data>
+  <data name="Help_Yellow_Description" xml:space="preserve">
+    <value>Parametrar</value>
+  </data>
   <data name="Input_Command" xml:space="preserve">
     <value>Mata in kommando:</value>
   </data>
@@ -167,6 +191,9 @@
   </data>
   <data name="Menu_Header" xml:space="preserve">
     <value>Välkommen till garage Liljeholmen!</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Hjälp</value>
   </data>
   <data name="Menu_Input_Capacity" xml:space="preserve">
     <value>Mata in kapacitet</value>
