@@ -11,15 +11,11 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public int NumberOfSeats { get; set; }
 
-        public Bus(ResourceManager resourceManager, String licence, int numberOfSeats) : base(resourceManager, licence)
+        public Bus(String licence, int numberOfSeats) : base(licence)
         {
             NumberOfSeats = numberOfSeats;
-        }
-
-        public override String ToString()
-        {
-            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Bus_NumberOfSeats") + ": " + NumberOfSeats;
-        }
+            propertyNameToResource.Add("NumberOfSeats", "Bus_NumberOfSeats");
+        }       
      
         public new static List<ParameterInfo> GetParameters()
         {

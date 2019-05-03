@@ -181,7 +181,7 @@
     <value>Create a garage with specific capacity</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Drive a vehicle</value>
+    <value>Drive a vehicle!</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit application</value>
@@ -210,6 +210,9 @@
   <data name="Menu_Park_Vehicle" xml:space="preserve">
     <value>Park a vehicle</value>
   </data>
+  <data name="Menu_Return" xml:space="preserve">
+    <value>Return to main menu</value>
+  </data>
   <data name="Menu_Search_Attribute" xml:space="preserve">
     <value>Search by attribute</value>
   </data>
@@ -223,7 +226,7 @@
     <value>Silencer</value>
   </data>
   <data name="Parking_Vehicle" xml:space="preserve">
-    <value>Parking vehicle</value>
+    <value>Parking vehicle!</value>
   </data>
   <data name="Search_Failed" xml:space="preserve">
     <value>Could not find any vehicles with the license plate</value>

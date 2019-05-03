@@ -11,14 +11,10 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public bool Silencer { get; set; }
 
-        public Motorcycle(ResourceManager resourceManager, String licence, bool silencer) : base(resourceManager, licence)
+        public Motorcycle(String licence, bool silencer) : base(licence)
         {
             Silencer = silencer;
-        }
-
-        public override String ToString()
-        {
-            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Motorcycle_Silencer") + ": " + Silencer;
+            propertyNameToResource.Add("Silencer", "Motorcycle_Silencer");
         }
 
         public new static List<ParameterInfo> GetParameters()

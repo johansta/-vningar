@@ -24,7 +24,7 @@ namespace Övning_5_Presentation_Logic.UserInterfaces
             menuItems.Add(new MenuItem('g', resourceManager.GetString("Menu_Group_Vehicles"), garageHandler.ListByVehicleType));
             menuItems.Add(new MenuItem('s', resourceManager.GetString("Menu_Search_License"), garageHandler.FindVehicleByLicense));
             menuItems.Add(new MenuItem('a', resourceManager.GetString("Menu_Search_Attribute"), garageHandler.FindVehicleByAttributes));
-            menuItems.Add(new MenuItem('q', resourceManager.GetString("Menu_Exit"), Exit));
+            menuItems.Add(new MenuItem('q', resourceManager.GetString("Menu_Return"), Exit));
         }
     }
 }

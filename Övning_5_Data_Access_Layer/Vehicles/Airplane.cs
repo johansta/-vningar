@@ -11,16 +11,12 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public int NumberOfParachutes { get; set; }
 
-        public Airplane(ResourceManager resourceManager, String licence, int numberOfParachutes) : base(resourceManager, licence)
+        public Airplane(String licence, int numberOfParachutes) : base(licence)
         {
             NumberOfParachutes = numberOfParachutes;
+            propertyNameToResource.Add("NumberOfParachutes", "Airplane_NumberOfParachutes");
         }
-
-        public override String ToString()
-        {
-            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Airplane_NumberOfParachutes") + ": " + NumberOfParachutes;
-        }
-
+   
         public new static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();

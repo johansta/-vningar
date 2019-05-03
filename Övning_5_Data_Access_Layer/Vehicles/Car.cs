@@ -17,16 +17,12 @@ namespace Övning_5_Data_Access_Layer.Vehicles
     {
         public FuelType FuelType { get; set; }
 
-        public Car(ResourceManager resourceManager, String licence, FuelType fuelType) : base(resourceManager, licence)
+        public Car(String licence, FuelType fuelType) : base(licence)
         {
             FuelType = fuelType;
+            propertyNameToResource.Add("FuelType", "Car_FuelType");
         }
-
-        public override String ToString()
-        {
-            return base.ToString() + Environment.NewLine + ResourceManager.GetString("Car_FuelType") + ": " + FuelType;
-        }
-
+      
         public new static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();

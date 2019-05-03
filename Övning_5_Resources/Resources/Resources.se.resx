@@ -181,7 +181,7 @@
     <value>Skapa ett garage</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Kör fordon</value>
+    <value>Kör fordon!</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Avsluta program</value>
@@ -208,7 +208,10 @@
     <value>Lista fordon</value>
   </data>
   <data name="Menu_Park_Vehicle" xml:space="preserve">
-    <value>Parkera fordon</value>
+    <value>Parkera ett fordon</value>
+  </data>
+  <data name="Menu_Return" xml:space="preserve">
+    <value>Återgå till huvudmenyn</value>
   </data>
   <data name="Menu_Search_Attribute" xml:space="preserve">
     <value>Sök med attribut</value>
@@ -223,7 +226,7 @@
     <value>Ljuddämpare</value>
   </data>
   <data name="Parking_Vehicle" xml:space="preserve">
-    <value>Parkera fordon</value>
+    <value>Parkerar fordon!</value>
   </data>
   <data name="Search_Failed" xml:space="preserve">
     <value>Kunde inte hitta något fordon med lincensnummer</value>

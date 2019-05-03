@@ -38,7 +38,7 @@ namespace Övning_5_Tools
             }
 
             VehicleType inputVehicleType = (VehicleType)inputEnum;
-            VehicleFactory vehicleFactory = new VehicleFactory(ResourceManager);
+            VehicleFactory vehicleFactory = new VehicleFactory();
 
             List<ParameterInfo> parameters = vehicleFactory.GetParameters(inputVehicleType);
 

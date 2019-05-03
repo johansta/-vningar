@@ -28,19 +28,17 @@ namespace Övning_5_UnitTest
 
         [TestInitialize]
         public void TestInit(){
-
-            ResourceManager resourceManager = null;
-
-            list.Add(new Car(resourceManager, "ABC123", FuelType.GASOLINE));
-            list.Add(new Car(resourceManager, "EFG123", FuelType.DIESEL));
-            list.Add(new Boat(resourceManager, "HIJ123", 3));
-            list.Add(new Boat(resourceManager, "KLM123", 2));
-            list.Add(new Airplane(resourceManager, "NOP123", 100));
-            list.Add(new Airplane(resourceManager, "NOP456", 42));
-            list.Add(new Motorcycle(resourceManager, "NOP789", true));
-            list.Add(new Motorcycle(resourceManager ,"QRS123", false));
-            list.Add(new Bus(resourceManager, "QRS456", 66));
-            list.Add(new Bus(resourceManager, "QRS789", 90));
+         
+            list.Add(new Car("ABC123", FuelType.GASOLINE));
+            list.Add(new Car("EFG123", FuelType.DIESEL));
+            list.Add(new Boat("HIJ123", 3));
+            list.Add(new Boat("KLM123", 2));
+            list.Add(new Airplane("NOP123", 100));
+            list.Add(new Airplane("NOP456", 42));
+            list.Add(new Motorcycle("NOP789", true));
+            list.Add(new Motorcycle("QRS123", false));
+            list.Add(new Bus("QRS456", 66));
+            list.Add(new Bus("QRS789", 90));
 
             garageRepository = new Gararge<Vehicle>(list.Count);
         }

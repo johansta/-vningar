@@ -8,31 +8,27 @@ using System.Threading.Tasks;
 
 namespace Övning_5_Data_Access_Layer
 {
-
     public delegate bool TryParse(string s, out object result);
    
     public class ParameterInfo
     {
         public String name;
+        public Object value;
         public Type type;
         public TryParse tryParse;
-        public Object value;
     }
 
     public abstract class Vehicle
     {
-        /*public Vehicle()
+        
+        public Vehicle(String licensePlate)
         {
-
-        }*/
-
-        public Vehicle(ResourceManager resourceManager, String licensePlate)
-        {
-            ResourceManager = resourceManager;
             LicensePlate = licensePlate;
+
+            propertyNameToResource.Add("LicensePlate", "Vehicle_License_Plate");
         }
 
-        public ResourceManager ResourceManager { get; private set; }
+        public Dictionary<string, string> propertyNameToResource = new Dictionary<string, string>();
 
         private String licensePlate;
 
@@ -41,12 +37,7 @@ namespace Övning_5_Data_Access_Layer
             get { return licensePlate; }
             set { licensePlate = value; }
         }
-
-        public override String ToString()
-        {
-            return ResourceManager.GetString("Vehicle_License_Plate") + ": " + licensePlate + Environment.NewLine + ResourceManager.GetString("Vehicle_Type") + ": " + this.GetType().Name;
-        }
-
+       
         public static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();

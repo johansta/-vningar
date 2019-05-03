@@ -76,7 +76,11 @@ namespace Övning_5_Presentation_Logic
                     if (RunMenuAction(command))
                     {
                         success = true;
-                        PrintMenu();
+
+                        if (running)
+                        {
+                            PrintMenu();
+                        }
                     }
                 }
 
