@@ -98,14 +98,12 @@ namespace Övning_5_Business_Logic
         }
 
         public void ListByVehicleType()
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-
+        {           
             var viechleTypes = Garage.GroupByType();
 
             foreach (var viechleType in viechleTypes)
             {               
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key + 
+                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key.Name + 
                                                     Environment.NewLine +
                                                     ResourceManager.GetString("Vehicle_Count") + ": " + viechleType.Count(),                                                    
                                                     ConsoleColor.Green);
