@@ -13,16 +13,16 @@ namespace Övning_5_Data_Access_Layer
         {
             Capacity = capacity;
             vehicles = new T[capacity];
-            NumVehicles = 0;
+            Occupied = 0;
         }
 
         private T[] vehicles;
         public int Capacity { get; private set; }
-        public int NumVehicles { get; private set; }
+        public int Occupied { get; private set; }
         
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < NumVehicles; i++)
+            for (int i = 0; i < Occupied; i++)
             {
                 if (vehicles[i] != null)
                 {
@@ -38,7 +38,7 @@ namespace Övning_5_Data_Access_Layer
 
         public void Add(T vehicle)
         {
-            vehicles[NumVehicles++] = vehicle;
+            vehicles[Occupied++] = vehicle;
         }
 
         public void Remove(T vehicle)
@@ -46,20 +46,20 @@ namespace Övning_5_Data_Access_Layer
             var cars = vehicles.Where(x => x?.LicensePlate.ToUpper() != vehicle.LicensePlate.ToUpper());
             vehicles = cars.ToArray();
 
-            NumVehicles--;
+            Occupied--;
         }
 
         public void Clear()
         {
-            for (int i = 0; i < NumVehicles; i++)
+            for (int i = 0; i < Occupied; i++)
             {
                 vehicles[i] = null;
             }
 
-            NumVehicles = 0;
+            Occupied = 0;
         }
 
-        public T Find(String licensePlate)
+        public T Find(string licensePlate)
         {
             IEnumerable<T> result = vehicles.Where((x) =>
             {
@@ -85,7 +85,7 @@ namespace Övning_5_Data_Access_Layer
             return null;
         }
 
-        public IEnumerable<T> Find(Dictionary<String,String> attributes)
+        public IEnumerable<T> Find(Dictionary<string, string> attributes)
         {
             IEnumerable<T> result = vehicles;
 

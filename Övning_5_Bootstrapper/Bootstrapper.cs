@@ -5,9 +5,9 @@ using System.Threading;
 using System.Reflection;
 
 using Övning_5_Tools;
-using Övning_5_Business_Logic;
-using Övning_5_Presentation_Logic;
-using Övning_5_Presentation_Logic.UserInterfaces;
+using Övning_5_Business_Layer;
+using Övning_5_Presentation_Layer;
+using Övning_5_Presentation_Layer.UserInterfaces;
 
 namespace Övning_5_Bootstrapper
 {

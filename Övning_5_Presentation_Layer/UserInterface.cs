@@ -2,7 +2,7 @@
 
 using Övning_5_Tools;
 
-using Övning_5_Business_Logic;
+using Övning_5_Business_Layer;
 using Övning_5_Data_Access_Layer;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-namespace Övning_5_Presentation_Logic
+namespace Övning_5_Presentation_Layer
 {
     public abstract class UserInterface
     {

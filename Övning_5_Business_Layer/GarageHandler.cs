@@ -8,7 +8,7 @@ using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Övning_5_Business_Logic
+namespace Övning_5_Business_Layer
 {
     public class GarageHandler
     {
@@ -168,7 +168,7 @@ namespace Övning_5_Business_Logic
         
         public void Park()
         {
-            Vehicle vehicle = Input.InputVehicle2();//Input.InputVehicle();
+            Vehicle vehicle = Input.InputVehicle();
 
             if (vehicle != null)          
             {              

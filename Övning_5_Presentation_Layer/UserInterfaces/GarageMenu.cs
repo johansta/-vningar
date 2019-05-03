@@ -1,4 +1,4 @@
-﻿using Övning_5_Business_Logic;
+﻿using Övning_5_Business_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Presentation_Logic.UserInterfaces
+namespace Övning_5_Presentation_Layer.UserInterfaces
 {
     public class GarageMenu : UserInterface
     {

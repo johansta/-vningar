@@ -13,7 +13,7 @@ namespace Övning_5_Tools
     {
         public static ResourceManager ResourceManager { get; set; }
 
-        public static Vehicle InputVehicle2()
+        public static Vehicle InputVehicle()
         {
             Console.WriteLine(Environment.NewLine + ResourceManager.GetString("Menu_Vehicle_Types") + Environment.NewLine);
            
@@ -63,6 +63,44 @@ namespace Övning_5_Tools
             }
 
             return vehicleFactory.GetVehicle(inputVehicleType, parameters);        
+        }
+       
+        public static String InputLicense()
+        {           
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_License_Number_To_Search_For"));
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
+
+            String license = ConsoleWrapper.ReadLine(ConsoleColor.Blue);      
+            
+            if(!String.IsNullOrWhiteSpace(license) && license.Length == 6)
+            {
+                return license;
+            }
+
+            return null;
+        }
+
+        public static Dictionary<String, String> InputAttributes()
+        {
+            Dictionary<String, String> attributeDictionary = new Dictionary<String, String>();
+           
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Number_Of_Attributes_To_Search_For"));
+        
+            if(Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int numberOfAttributes))
+            {
+                for (int i = 0; i < numberOfAttributes; i++)
+                {
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Name") + ":");
+                    String name = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Value") + ":");
+                    String value = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
+                    attributeDictionary.Add(name, value);
+                }               
+            }
+
+            return attributeDictionary;
         }
 
         //Using reflection
@@ -142,44 +180,5 @@ namespace Övning_5_Tools
 
             return instance;
         }*/
-
-        public static String InputLicense()
-        {           
-            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_License_Number_To_Search_For"));
-            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
-
-            String license = ConsoleWrapper.ReadLine(ConsoleColor.Blue);      
-            
-            if(!String.IsNullOrWhiteSpace(license) && license.Length == 6)
-            {
-                return license;
-            }
-
-            return null;
-        }
-
-        public static Dictionary<String, String> InputAttributes()
-        {
-            Dictionary<String, String> attributeDictionary = new Dictionary<String, String>();
-           
-            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Number_Of_Attributes_To_Search_For"));
-        
-            if(Int32.TryParse(Console.ReadLine(), out int numberOfAttributes))
-            {
-                for (int i = 0; i < numberOfAttributes; i++)
-                {
-                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Name") + ":");
-                    String name = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-
-                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Value") + ":");
-                    String value = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-
-                    attributeDictionary.Add(name, value);
-                }               
-            }
-
-            return attributeDictionary;
-        }
-
     }
 }

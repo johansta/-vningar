@@ -80,7 +80,7 @@ namespace Övning_5_UnitTest
 
             //Assert    
 
-            Assert.AreEqual(0, garageRepository.NumVehicles);
+            Assert.AreEqual(0, garageRepository.Occupied);
         }
 
         [TestMethod]
@@ -97,7 +97,7 @@ namespace Övning_5_UnitTest
 
             //Assert
 
-            Assert.AreEqual(list.Count, garageRepository.NumVehicles);
+            Assert.AreEqual(list.Count, garageRepository.Occupied);
 
         }
 
@@ -122,7 +122,7 @@ namespace Övning_5_UnitTest
 
             //Assert
 
-            Assert.AreEqual(list.Count - numVehiclesRemoved, garageRepository.NumVehicles);
+            Assert.AreEqual(list.Count - numVehiclesRemoved, garageRepository.Occupied);
 
         }
 

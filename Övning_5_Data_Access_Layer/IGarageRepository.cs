@@ -11,10 +11,10 @@ namespace Övning_5_Data_Access_Layer
         void Clear();
 
         int Capacity { get; }
-        int NumVehicles { get; }
+        int Occupied { get; }
 
-        T Find(String licensePlate);
-        IEnumerable<T> Find(Dictionary<String, String> attributes);
+        T Find(string licenseNumber);
+        IEnumerable<T> Find(Dictionary<string, string> attributes);
 
         IEnumerable<IGrouping<Type, T>> GroupByType();
     }

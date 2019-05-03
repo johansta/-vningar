@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Övning_5_Presentation_Logic
+namespace Övning_5_Presentation_Layer
 {
     public class MenuItem
     {

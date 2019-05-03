@@ -49,13 +49,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Övning_5_Business_Logic\Business Logic.csproj">
+    <ProjectReference Include="..\Övning_5_Business_Layer\Business Layer.csproj">
       <Project>{2584134e-54bd-40a3-b212-7c306843636f}</Project>
-      <Name>Business Logic</Name>
+      <Name>Business Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Övning_5_Presentation_Logic\Presentation Logic.csproj">
+    <ProjectReference Include="..\Övning_5_Presentation_Layer\Presentation Layer.csproj">
       <Project>{e168c005-5ef9-4932-b239-281d096f9842}</Project>
-      <Name>Presentation Logic</Name>
+      <Name>Presentation Layer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Övning_5_Resources\Resources.csproj">
       <Project>{2cf125a9-6d31-4c88-8051-91fa698bb17b}</Project>
