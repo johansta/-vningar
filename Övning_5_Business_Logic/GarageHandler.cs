@@ -57,15 +57,17 @@ namespace Övning_5_Business_Logic
         private void ListVehiclesByLicensePlate(String license)
         {
             Vehicle vehicle = Garage.Find(license);
-
-            if (vehicle != null)
+          
+            if(vehicle != null)
             {
+                Console.WriteLine();
                 Write(vehicle);        
             }
             else
             {              
                 ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Search_Failed") + ": " + license, ConsoleColor.DarkRed, 1, 2);                
             }
+
         }
 
         private void ListVehiclesByPredicate(Dictionary<String, String> attributes)

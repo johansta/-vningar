@@ -120,6 +120,12 @@
   <data name="Airplane_NumberOfParachutes" xml:space="preserve">
     <value>Antal fallskärmar</value>
   </data>
+  <data name="Attribute_Name" xml:space="preserve">
+    <value>Atributnamn</value>
+  </data>
+  <data name="Attribute_Value" xml:space="preserve">
+    <value>Atributvärde</value>
+  </data>
   <data name="Boat_NumberOfEngines" xml:space="preserve">
     <value>Antal motorer</value>
   </data>
@@ -164,6 +170,12 @@
   </data>
   <data name="Input_License_Number" xml:space="preserve">
     <value>Mata in registeringsnummer</value>
+  </data>
+  <data name="Input_License_Number_To_Search_For" xml:space="preserve">
+    <value>Mata in registreringsnumret som ska sökas efter!</value>
+  </data>
+  <data name="Input_Number_Of_Attributes_To_Search_For" xml:space="preserve">
+    <value>Mata in antalet attribut som ska sökas efter!</value>
   </data>
   <data name="Invalid_Command" xml:space="preserve">
     <value>Felaktigt commando, försök igen!</value>

@@ -57,7 +57,7 @@ namespace Övning_5_Tools
           
                 while (!param.tryParse(inputArgument, out param.value))
                 {                                  
-                    Console.Write(Environment.NewLine + ResourceManager.GetString("Invalid_Option"));
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Invalid_Option"));
                     inputArgument = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
                 }
             }
@@ -145,10 +145,10 @@ namespace Övning_5_Tools
 
         public static String InputLicense()
         {           
-            Console.Write(Environment.NewLine + "Input the license plate to search for:");
-                   
-            Console.Write(Environment.NewLine + "License plate:");
-            String license = Console.ReadLine();      
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_License_Number_To_Search_For"));
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
+
+            String license = ConsoleWrapper.ReadLine(ConsoleColor.Blue);      
             
             if(!String.IsNullOrWhiteSpace(license) && license.Length == 6)
             {
@@ -161,18 +161,18 @@ namespace Övning_5_Tools
         public static Dictionary<String, String> InputAttributes()
         {
             Dictionary<String, String> attributeDictionary = new Dictionary<String, String>();
-
-            Console.Write(Environment.NewLine + "Input the number of attributes to search for:");
+           
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Number_Of_Attributes_To_Search_For"));
         
             if(Int32.TryParse(Console.ReadLine(), out int numberOfAttributes))
             {
                 for (int i = 0; i < numberOfAttributes; i++)
                 {
-                    Console.Write(Environment.NewLine + "Attribute name:");
-                    String name = Console.ReadLine();
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Name") + ":");
+                    String name = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
-                    Console.Write(Environment.NewLine + "Attribute value:");
-                    String value = Console.ReadLine();
+                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Attribute_Value") + ":");
+                    String value = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                     attributeDictionary.Add(name, value);
                 }               
