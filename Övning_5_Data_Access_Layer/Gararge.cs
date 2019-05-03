@@ -114,7 +114,7 @@ namespace Övning_5_Data_Access_Layer
 
         public IEnumerable<IGrouping<Type, T>> GroupByType()
         {
-            return vehicles.GroupBy(x => x?.GetType());                        
+            return vehicles.GroupBy(x => x?.GetType()).Where(x => x.Key != null);                        
         }
     }
 }

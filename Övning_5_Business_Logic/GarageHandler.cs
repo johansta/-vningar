@@ -98,16 +98,27 @@ namespace Övning_5_Business_Logic
         }
 
         public void ListByVehicleType()
-        {           
+        {
+
+            if (Garage.Count() == 0)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Empty_Garage"), ConsoleColor.Red);
+                return;
+            }
+
             var viechleTypes = Garage.GroupByType();
 
             foreach (var viechleType in viechleTypes)
-            {               
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key.Name + 
+            {
+                Console.WriteLine();
+                WriteType(viechleType.Key);
+                Console.WriteLine(ResourceManager.GetString("Vehicle_Count") + ": " + viechleType.Count());
+
+                /*ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key.Name + 
                                                     Environment.NewLine +
                                                     ResourceManager.GetString("Vehicle_Count") + ": " + viechleType.Count(),                                                    
-                                                    ConsoleColor.Green);
-            }           
+                                                    ConsoleColor.Green);*/
+            }
         }
 
         public void Drive()
@@ -117,7 +128,7 @@ namespace Övning_5_Business_Logic
             while (!validInput)
             {
                 Console.WriteLine(ResourceManager.GetString("Input_License_Number") + ":");
-                String licensePlate = Console.ReadLine();
+                String licensePlate = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                 String pattern = @"[a-zA-Z]{3}\d{3}";
                 Regex regex = new Regex(pattern);
@@ -195,20 +206,24 @@ namespace Övning_5_Business_Logic
         }
 
         private void Write(Vehicle vehicle)
-        {
-            ConsoleWrapper.WriteLine("{0}: {1}", new object[] {    ResourceManager.GetString("Vehicle_Type"),
-                                                                        vehicle.GetType().Name},
-                                                     new ConsoleColor[] {  ConsoleColor.Yellow,
-                                                                            ConsoleColor.Blue});
+        {          
+            WriteType(vehicle.GetType());
 
             foreach (var prop in vehicle.GetProperties())
             {
                 string resource = vehicle.propertyNameToResource[prop.Key];
 
-                ConsoleWrapper.WriteLine("{0}: {1}", new object[] {ResourceManager.GetString(resource),
-                                                                       prop.Value},
-                                                 new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.Blue });
+                ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceManager.GetString(resource),
+                                                                        prop.Value},
+                                                        new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.Blue });
             }
+        }
+
+        private void WriteType(Type type)
+        {
+            ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceManager.GetString("Vehicle_Type"),
+                                                                    type.Name},
+                                                    new ConsoleColor[] {  ConsoleColor.Yellow, ConsoleColor.Blue});
         }
     }
 }

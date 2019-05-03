@@ -27,14 +27,16 @@ namespace Övning_5_Tools
 
             }
 
-            Console.Write(Environment.NewLine + ResourceManager.GetString("Menu_Input_Integer") + ":");
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Menu_Input_Integer") + ":");
 
             int inputEnum = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
 
             while (!Enum.IsDefined(typeof(VehicleType), inputEnum))
             {
-                Console.Write(Environment.NewLine + ResourceManager.GetString("Invalid_Option"));
-                inputEnum = Console.ReadLine()[0] - 48;
+                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Invalid_Option"),ConsoleColor.Red);
+                ConsoleWrapper.WritePreLine(ResourceManager.GetString("Menu_Input_Integer") + ":");
+
+                inputEnum = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
             }
 
             VehicleType inputVehicleType = (VehicleType)inputEnum;
