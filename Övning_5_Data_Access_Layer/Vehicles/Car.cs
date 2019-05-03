@@ -31,7 +31,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
          
             parameterInfo.tryParse = (string s, out object r) => {
 
-                bool result = Enum.TryParse(s, out FuelType v);
+                bool result = Enum.TryParse(s, true, out FuelType v);
                 r = v;
                 return result;
             };

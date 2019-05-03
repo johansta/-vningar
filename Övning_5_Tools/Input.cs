@@ -18,9 +18,7 @@ namespace Övning_5_Tools
             Console.WriteLine(Environment.NewLine + ResourceManager.GetString("Menu_Vehicle_Types") + Environment.NewLine);
            
             foreach (VehicleType vehicleType in Enum.GetValues(typeof(VehicleType)))
-            {
-                //Console.WriteLine((int)vehicleType + " " + vehicleType);
-
+            {               
                 ConsoleWrapper.WriteLine("{0} -> {1}",
                    new object[] { (int)vehicleType, vehicleType },
                    new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White });
@@ -48,7 +46,6 @@ namespace Övning_5_Tools
             {
                 ParameterInfo param = parameters[i];
 
-                //Console.Write(Environment.NewLine + "Input value of parameter " + param.name + " of type " + param.type.Name + ":");            
                 ConsoleWrapper.WriteLine(Environment.NewLine + ResourceManager.GetString("Menu_Input_Parameter") + ":",
                     new object[] { param.name, param.type.Name }, 
                     new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.Yellow });
@@ -84,9 +81,9 @@ namespace Övning_5_Tools
         {
             Dictionary<String, String> attributeDictionary = new Dictionary<String, String>();
            
-            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Number_Of_Attributes_To_Search_For"));
-        
-            if(Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int numberOfAttributes))
+            ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Number_Of_Attributes_To_Search_For") + ":");
+
+            if (Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int numberOfAttributes))
             {
                 for (int i = 0; i < numberOfAttributes; i++)
                 {

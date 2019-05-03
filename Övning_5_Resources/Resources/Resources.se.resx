@@ -187,7 +187,7 @@
     <value>Fel alternativ, försök igen!</value>
   </data>
   <data name="Leaving_Vehicle" xml:space="preserve">
-    <value>Fordon som lämnar garaget</value>
+    <value>Ett fordon lämnar garaget!</value>
   </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
     <value>Skapa ett garage</value>

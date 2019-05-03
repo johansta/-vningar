@@ -143,13 +143,9 @@ namespace Övning_5_Business_Layer
 
                     if (vehicle != null)
                     {
-                        Garage.Remove(vehicle);
-
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Leaving_Vehicle") + ": ");
-                        Console.WriteLine(vehicle);
-                        //Console.WriteLine(Environment.NewLine + "Leaving vehicle: " + Environment.NewLine + vehicle + Environment.NewLine);
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Garage.Remove(vehicle);                    
+                        ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Leaving_Vehicle"));
+                        Write(vehicle);                    
                     }
                     else
                     {
