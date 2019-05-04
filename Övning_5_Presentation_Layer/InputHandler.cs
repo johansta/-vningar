@@ -58,9 +58,10 @@ namespace Övning_5_Presentation_Layer
                new object[] { name },
                new ConsoleColor[] { ConsoleColor.Yellow });
 
-            ConsoleWrapper.Write("(", ConsoleColor.White);
+            ConsoleWrapper.Write("(", ConsoleColor.White);         
+            ConsoleWrapper.Write(ResourceContext.Language.GetString(param.name + "_Range"), ConsoleColor.Blue);
 
-            for (int j = 0; j < param.arguments.Count; j++)
+            /*for (int j = 0; j < param.arguments.Count; j++)
             {
                 if (j == param.arguments.Count - 1)
                 {
@@ -71,7 +72,7 @@ namespace Övning_5_Presentation_Layer
                     ConsoleWrapper.Write(param.arguments[j], ConsoleColor.Blue);
                     ConsoleWrapper.Write(", ", ConsoleColor.White);
                 }
-            }
+            }*/
 
             ConsoleWrapper.WriteLine("):", ConsoleColor.White);
         }

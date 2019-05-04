@@ -31,7 +31,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
             };
 
             List<string> arguments = new List<string>();
-            arguments.Add("0 to " + int.MaxValue);
+            arguments.Add("1 - 64");
 
             parameterInfo.arguments = arguments;
 

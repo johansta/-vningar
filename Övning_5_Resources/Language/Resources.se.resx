@@ -135,11 +135,17 @@
   <data name="Capacity_Failed_Validation" xml:space="preserve">
     <value>Kapaciteten misslyckades valideringen, försök igen!</value>
   </data>
+  <data name="Capacity_Range" xml:space="preserve">
+    <value>1 till 128</value>
+  </data>
   <data name="Car_FuelType" xml:space="preserve">
     <value>Bränsletyp</value>
   </data>
   <data name="Empty_Garage" xml:space="preserve">
     <value>Gararget är tomt!</value>
+  </data>
+  <data name="FuelType_Range" xml:space="preserve">
+    <value>GASOLINE eller DIESEL</value>
   </data>
   <data name="Help_Blue" xml:space="preserve">
     <value>Blå</value>
@@ -192,6 +198,9 @@
   <data name="Leaving_Vehicle" xml:space="preserve">
     <value>Ett fordon lämnar garaget!</value>
   </data>
+  <data name="LicensePlate_Range" xml:space="preserve">
+    <value>3 bokstäver föjt av 3 siffror t.ex. ABC123</value>
+  </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
     <value>Skapa ett garage</value>
   </data>
@@ -240,6 +249,15 @@
   <data name="Motorcycle_Silencer" xml:space="preserve">
     <value>Ljuddämpare</value>
   </data>
+  <data name="NumberOfEngines_Range" xml:space="preserve">
+    <value>1 till 64</value>
+  </data>
+  <data name="NumberOfParachutes_Range" xml:space="preserve">
+    <value>0 till 512</value>
+  </data>
+  <data name="NumberOfSeats_Range" xml:space="preserve">
+    <value>1 till 512</value>
+  </data>
   <data name="Parking_Vehicle" xml:space="preserve">
     <value>Parkerar fordon!</value>
   </data>
@@ -248,6 +266,9 @@
   </data>
   <data name="Search_License_Not_Found" xml:space="preserve">
     <value>Inget fordon i garaget med registeringsnummer</value>
+  </data>
+  <data name="Silencer_Range" xml:space="preserve">
+    <value>FALSE eller TRUE</value>
   </data>
   <data name="Vehicle_Count" xml:space="preserve">
     <value>Antal fordon</value>

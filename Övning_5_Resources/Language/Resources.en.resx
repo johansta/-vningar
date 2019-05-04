@@ -135,11 +135,17 @@
   <data name="Capacity_Failed_Validation" xml:space="preserve">
     <value>Capacity failed validation, try again!</value>
   </data>
+  <data name="Capacity_Range" xml:space="preserve">
+    <value>1 to 128</value>
+  </data>
   <data name="Car_FuelType" xml:space="preserve">
     <value>Fuel type</value>
   </data>
   <data name="Empty_Garage" xml:space="preserve">
     <value>The garage is empty</value>
+  </data>
+  <data name="FuelType_Range" xml:space="preserve">
+    <value>GASOLINE or DIESEL</value>
   </data>
   <data name="Help_Blue" xml:space="preserve">
     <value>Blue</value>
@@ -192,6 +198,9 @@
   <data name="Leaving_Vehicle" xml:space="preserve">
     <value>A vehicle is leaving the garage!</value>
   </data>
+  <data name="LicensePlate_Range" xml:space="preserve">
+    <value>Three letters followed by 3 digits e.g. ABC123</value>
+  </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
     <value>Create a garage with specific capacity</value>
   </data>
@@ -240,6 +249,15 @@
   <data name="Motorcycle_Silencer" xml:space="preserve">
     <value>Silencer</value>
   </data>
+  <data name="NumberOfEngines_Range" xml:space="preserve">
+    <value>1 to 64</value>
+  </data>
+  <data name="NumberOfParachutes_Range" xml:space="preserve">
+    <value>0 to 512</value>
+  </data>
+  <data name="NumberOfSeats_Range" xml:space="preserve">
+    <value>1 to 512</value>
+  </data>
   <data name="Parking_Vehicle" xml:space="preserve">
     <value>Parking vehicle!</value>
   </data>
@@ -248,6 +266,9 @@
   </data>
   <data name="Search_License_Not_Found" xml:space="preserve">
     <value>No vehicle in the garage with license number</value>
+  </data>
+  <data name="Silencer_Range" xml:space="preserve">
+    <value>FALSE or TRUE</value>
   </data>
   <data name="Vehicle_Count" xml:space="preserve">
     <value>Vehicle count</value>
