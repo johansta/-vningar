@@ -15,6 +15,13 @@ namespace Övning_5_Tools
             return input;
         }
 
+        public static void Write(string sentence, ConsoleColor color, ConsoleColor @default = ConsoleColor.White)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(sentence);
+            Console.ForegroundColor = @default;
+        }
+
         public static void WriteLine(string sentence, ConsoleColor color, ConsoleColor @default = ConsoleColor.White)
         {
             Console.ForegroundColor = color;

@@ -117,142 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Airplane_NumberOfParachutes" xml:space="preserve">
-    <value>Antal fallskärmar</value>
+  <data name="FuelType" xml:space="preserve">
+    <value>Car_FuelType</value>
   </data>
-  <data name="Attribute_Name" xml:space="preserve">
-    <value>Atributnamn</value>
+  <data name="LicensePlate" xml:space="preserve">
+    <value>Vehicle_License_Plate</value>
   </data>
-  <data name="Attribute_Value" xml:space="preserve">
-    <value>Atributvärde</value>
+  <data name="NumberOfEngines" xml:space="preserve">
+    <value>Boat_NumberOfEngines</value>
   </data>
-  <data name="Boat_NumberOfEngines" xml:space="preserve">
-    <value>Antal motorer</value>
+  <data name="NumberOfParachutes" xml:space="preserve">
+    <value>Airplane_NumberOfParachutes</value>
   </data>
-  <data name="Bus_NumberOfSeats" xml:space="preserve">
-    <value>Antal säten</value>
+  <data name="NumberOfSeats" xml:space="preserve">
+    <value>Bus_NumberOfSeats</value>
   </data>
-  <data name="Capacity_Failed_Validation" xml:space="preserve">
-    <value>Kapaciteten misslyckades valideringen, försök igen!</value>
-  </data>
-  <data name="Car_FuelType" xml:space="preserve">
-    <value>Bränsletyp</value>
-  </data>
-  <data name="Empty_Garage" xml:space="preserve">
-    <value>Gararget är tomt!</value>
-  </data>
-  <data name="Help_Blue" xml:space="preserve">
-    <value>Blå</value>
-  </data>
-  <data name="Help_Blue_Description" xml:space="preserve">
-    <value>Argument</value>
-  </data>
-  <data name="Help_Green" xml:space="preserve">
-    <value>Grön</value>
-  </data>
-  <data name="Help_Green_Description" xml:space="preserve">
-    <value>Kommandon</value>
-  </data>
-  <data name="Help_Red" xml:space="preserve">
-    <value>Röd</value>
-  </data>
-  <data name="Help_Red_Description" xml:space="preserve">
-    <value>Användarfel</value>
-  </data>
-  <data name="Help_Yellow" xml:space="preserve">
-    <value>Gul</value>
-  </data>
-  <data name="Help_Yellow_Description" xml:space="preserve">
-    <value>Parametrar</value>
-  </data>
-  <data name="Input_Command" xml:space="preserve">
-    <value>Mata in kommando:</value>
-  </data>
-  <data name="Input_License_Number" xml:space="preserve">
-    <value>Mata in registeringsnummer</value>
-  </data>
-  <data name="Input_License_Number_To_Search_For" xml:space="preserve">
-    <value>Mata in registreringsnumret som ska sökas efter!</value>
-  </data>
-  <data name="Input_Number_Of_Attributes_To_Search_For" xml:space="preserve">
-    <value>Mata in antalet attribut som ska sökas efter!</value>
-  </data>
-  <data name="Invalid_Command" xml:space="preserve">
-    <value>Felaktigt commando, försök igen!</value>
-  </data>
-  <data name="Invalid_Input" xml:space="preserve">
-    <value>Fel inmatning, försök igen!</value>
-  </data>
-  <data name="Invalid_Option" xml:space="preserve">
-    <value>Fel alternativ, försök igen!</value>
-  </data>
-  <data name="Leaving_Vehicle" xml:space="preserve">
-    <value>Ett fordon lämnar garaget!</value>
-  </data>
-  <data name="Menu_Create_Garage" xml:space="preserve">
-    <value>Skapa ett garage</value>
-  </data>
-  <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Kör fordon!</value>
-  </data>
-  <data name="Menu_Exit" xml:space="preserve">
-    <value>Avsluta program</value>
-  </data>
-  <data name="Menu_Group_Vehicles" xml:space="preserve">
-    <value>Gruppera fordon</value>
-  </data>
-  <data name="Menu_Header" xml:space="preserve">
-    <value>Välkommen till garage Liljeholmen!</value>
-  </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>Hjälp</value>
-  </data>
-  <data name="Menu_Input_Capacity" xml:space="preserve">
-    <value>Mata in kapacitet</value>
-  </data>
-  <data name="Menu_Input_Integer" xml:space="preserve">
-    <value>Mata in ett heltal</value>
-  </data>
-  <data name="Menu_Input_Parameter" xml:space="preserve">
-    <value>Mata in värdet för parameter {0} av typen {1}</value>
-  </data>
-  <data name="Menu_List_Vehicles" xml:space="preserve">
-    <value>Lista fordon</value>
-  </data>
-  <data name="Menu_Park_Vehicle" xml:space="preserve">
-    <value>Parkera ett fordon</value>
-  </data>
-  <data name="Menu_Return" xml:space="preserve">
-    <value>Återgå till huvudmenyn</value>
-  </data>
-  <data name="Menu_Search_Attribute" xml:space="preserve">
-    <value>Sök med attribut</value>
-  </data>
-  <data name="Menu_Search_License" xml:space="preserve">
-    <value>Sök med registeringsnummer</value>
-  </data>
-  <data name="Menu_Vehicle_Types" xml:space="preserve">
-    <value>Fordonstyper</value>
-  </data>
-  <data name="Motorcycle_Silencer" xml:space="preserve">
-    <value>Ljuddämpare</value>
-  </data>
-  <data name="Parking_Vehicle" xml:space="preserve">
-    <value>Parkerar fordon!</value>
-  </data>
-  <data name="Search_Failed" xml:space="preserve">
-    <value>Kunde inte hitta något fordon med lincensnummer</value>
-  </data>
-  <data name="Search_License_Not_Found" xml:space="preserve">
-    <value>Inget fordon i garaget med registeringsnummer</value>
-  </data>
-  <data name="Vehicle_Count" xml:space="preserve">
-    <value>Antal fordon</value>
-  </data>
-  <data name="Vehicle_License_Plate" xml:space="preserve">
-    <value>Registeringskylt</value>
-  </data>
-  <data name="Vehicle_Type" xml:space="preserve">
-    <value>Fordons typ</value>
+  <data name="Silencer" xml:space="preserve">
+    <value>Motorcycle_Silencer</value>
   </data>
 </root>

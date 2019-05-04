@@ -13,8 +13,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
 
         public Airplane(String licence, int numberOfParachutes) : base(licence)
         {
-            NumberOfParachutes = numberOfParachutes;
-            propertyNameToResource.Add("NumberOfParachutes", "Airplane_NumberOfParachutes");
+            NumberOfParachutes = numberOfParachutes;           
         }
    
         public new static List<ParameterInfo> GetParameters()
@@ -29,6 +28,11 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
+
+            List<string> arguments = new List<string>();
+            arguments.Add("0 to " + int.MaxValue);
+
+            parameterInfo.arguments = arguments;
 
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);

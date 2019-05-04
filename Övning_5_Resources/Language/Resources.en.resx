@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Airplane_NumberOfParachutes" xml:space="preserve">
+    <value>Number of parachutes</value>
+  </data>
+  <data name="Attribute_Name" xml:space="preserve">
+    <value>Attibute name</value>
+  </data>
+  <data name="Attribute_Value" xml:space="preserve">
+    <value>Attibute value</value>
+  </data>
+  <data name="Boat_NumberOfEngines" xml:space="preserve">
+    <value>Number of engines</value>
+  </data>
+  <data name="Bus_NumberOfSeats" xml:space="preserve">
+    <value>Number of seats</value>
+  </data>
+  <data name="Capacity_Failed_Validation" xml:space="preserve">
+    <value>Capacity failed validation, try again!</value>
+  </data>
+  <data name="Car_FuelType" xml:space="preserve">
+    <value>Fuel type</value>
+  </data>
+  <data name="Empty_Garage" xml:space="preserve">
+    <value>The garage is empty</value>
+  </data>
+  <data name="Help_Blue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Help_Blue_Description" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Help_Green" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="Help_Green_Description" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="Help_Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Help_Red_Description" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Help_Yellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="Help_Yellow_Description" xml:space="preserve">
+    <value>Variable</value>
+  </data>
+  <data name="Input_Command" xml:space="preserve">
+    <value>Input_Command:</value>
+  </data>
+  <data name="Input_License_Number" xml:space="preserve">
+    <value>Input license number</value>
+  </data>
+  <data name="Input_License_Number_To_Search_For" xml:space="preserve">
+    <value>Input license number to search for</value>
+  </data>
+  <data name="Input_Number_Of_Attributes_To_Search_For" xml:space="preserve">
+    <value>Input number of attributes to search for</value>
+  </data>
+  <data name="Input_Value_For" xml:space="preserve">
+    <value>Input value for</value>
+  </data>
+  <data name="Invalid_Command" xml:space="preserve">
+    <value>Invalid command, try again!</value>
+  </data>
+  <data name="Invalid_Input" xml:space="preserve">
+    <value>Invalid_Input, try again!</value>
+  </data>
+  <data name="Invalid_Option" xml:space="preserve">
+    <value>Invalid option, try again!</value>
+  </data>
+  <data name="Leaving_Vehicle" xml:space="preserve">
+    <value>A vehicle is leaving the garage!</value>
+  </data>
+  <data name="Menu_Create_Garage" xml:space="preserve">
+    <value>Create a garage with specific capacity</value>
+  </data>
+  <data name="Menu_Drive_Vehicle" xml:space="preserve">
+    <value>Drive a vehicle!</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Exit application</value>
+  </data>
+  <data name="Menu_Group_Vehicles" xml:space="preserve">
+    <value>Group vehicles</value>
+  </data>
+  <data name="Menu_Header" xml:space="preserve">
+    <value>Welcome to garage Liljeholmen!</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Menu_Input_Capacity" xml:space="preserve">
+    <value>Input capacity</value>
+  </data>
+  <data name="Menu_Input_Integer" xml:space="preserve">
+    <value>Input integer</value>
+  </data>
+  <data name="Menu_Input_Parameter" xml:space="preserve">
+    <value>Input value of parameter {0} of type {1}</value>
+  </data>
+  <data name="Menu_List_Vehicles" xml:space="preserve">
+    <value>List vehicles</value>
+  </data>
+  <data name="Menu_Park_Vehicle" xml:space="preserve">
+    <value>Park a vehicle</value>
+  </data>
+  <data name="Menu_Return" xml:space="preserve">
+    <value>Return to main menu</value>
+  </data>
+  <data name="Menu_Search_Attribute" xml:space="preserve">
+    <value>Search by attribute</value>
+  </data>
+  <data name="Menu_Search_License" xml:space="preserve">
+    <value>Search by license number</value>
+  </data>
+  <data name="Menu_Vehicle_Types" xml:space="preserve">
+    <value>Vehicle types</value>
+  </data>
+  <data name="Motorcycle_Silencer" xml:space="preserve">
+    <value>Silencer</value>
+  </data>
+  <data name="Parking_Vehicle" xml:space="preserve">
+    <value>Parking vehicle!</value>
+  </data>
+  <data name="Search_Failed" xml:space="preserve">
+    <value>Could not find any vehicles with the license plate</value>
+  </data>
+  <data name="Search_License_Not_Found" xml:space="preserve">
+    <value>No vehicle in the garage with license number</value>
+  </data>
+  <data name="Vehicle_Count" xml:space="preserve">
+    <value>Vehicle count</value>
+  </data>
+  <data name="Vehicle_License_Plate" xml:space="preserve">
+    <value>License plate</value>
+  </data>
+  <data name="Vehicle_Type" xml:space="preserve">
+    <value>Vehicle type</value>
+  </data>
+</root>

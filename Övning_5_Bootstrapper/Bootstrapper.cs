@@ -1,39 +1,36 @@
 ﻿using System.Globalization;
-using System.Resources;
 using System.Configuration;
 using System.Threading;
-using System.Reflection;
 
-using Övning_5_Tools;
-using Övning_5_Business_Layer;
 using Övning_5_Presentation_Layer;
 using Övning_5_Presentation_Layer.UserInterfaces;
+using Övning_5_Resources;
 
 namespace Övning_5_Bootstrapper
 {
     class Bootstrapper
     {
-        static ResourceManager resourceManager;
-
-        static void setupResources()
-        {
-            resourceManager = new ResourceManager("Övning_5_Resources.Resources.Resources", Assembly.Load("Övning_5_Resources"));
-
+        static void SetupConfiguration()
+        {          
             string langauge = ConfigurationManager.AppSettings["language"];
             CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture(langauge);
 
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }
 
-
         static void Main(string[] args)
         {
-            setupResources();
+            ResourceContext resourceContext = new ResourceContext();
+            resourceContext.Setup();
 
-            Input.ResourceManager = resourceManager;
-            GarageHandler garageHandler = GarageHandler.GetInstance(resourceManager);
-            
-            UserInterface mainMenu = new MainMenu(resourceManager, garageHandler);
+            SetupConfiguration();
+           
+            ValidationHandler validationHandler = new ValidationHandler(resourceContext);
+            InputHandler inputHandler = new InputHandler(resourceContext, validationHandler);
+
+            GarageHandler garageHandler = GarageHandler.GetInstance(resourceContext, inputHandler);
+          
+            UserInterface mainMenu = new MainMenu(resourceContext, inputHandler, validationHandler, garageHandler);       
             mainMenu.Run();   
             
         }

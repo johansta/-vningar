@@ -14,7 +14,6 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         public Bus(String licence, int numberOfSeats) : base(licence)
         {
             NumberOfSeats = numberOfSeats;
-            propertyNameToResource.Add("NumberOfSeats", "Bus_NumberOfSeats");
         }       
      
         public new static List<ParameterInfo> GetParameters()
@@ -29,6 +28,11 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
+
+            List<string> arguments = new List<string>();
+            arguments.Add("0 to " + int.MaxValue);
+
+            parameterInfo.arguments = arguments;
 
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);

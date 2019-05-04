@@ -21,7 +21,7 @@ namespace Övning_5_Data_Access_Layer
     {
         public Vehicle GetVehicle(VehicleType vehicleType, List<ParameterInfo> parameterInfo)
         {
-            String licence = (String)parameterInfo[0].value;
+            string licence = ((string)parameterInfo[0].value).ToUpper();
 
             switch (vehicleType)
             {

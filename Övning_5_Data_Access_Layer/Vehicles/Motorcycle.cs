@@ -14,7 +14,6 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         public Motorcycle(String licence, bool silencer) : base(licence)
         {
             Silencer = silencer;
-            propertyNameToResource.Add("Silencer", "Motorcycle_Silencer");
         }
 
         public new static List<ParameterInfo> GetParameters()
@@ -29,6 +28,12 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
+
+            List<string> arguments = new List<string>();
+            arguments.Add(bool.TrueString);
+            arguments.Add(bool.FalseString);
+
+            parameterInfo.arguments = arguments;
 
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);

@@ -1,5 +1,6 @@
 ﻿using Övning_5_Data_Access_Layer;
 using Övning_5_Data_Access_Layer.Vehicles;
+using Övning_5_Resources;
 using Övning_5_Tools;
 using System;
 using System.Collections.Generic;
@@ -8,28 +9,30 @@ using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Övning_5_Business_Layer
+namespace Övning_5_Presentation_Layer
 {
     public class GarageHandler
     {
         private static GarageHandler instance;
 
-        private GarageHandler(ResourceManager resourceManager)
+        private GarageHandler(ResourceContext resourceContext, InputHandler inputHandler)
         {
-            ResourceManager = resourceManager;
+            ResourceContext = resourceContext;
+            InputHandler = inputHandler;
         }
 
-        public static GarageHandler GetInstance(ResourceManager resourceManager)
+        public static GarageHandler GetInstance(ResourceContext resourceContext, InputHandler inputHandler)
         {
             if (GarageHandler.instance == null)
             {
-                GarageHandler.instance = new GarageHandler(resourceManager);
+                GarageHandler.instance = new GarageHandler(resourceContext, inputHandler);
             }
 
             return GarageHandler.instance;
         }
 
-        public ResourceManager ResourceManager { get; private set; }
+        public ResourceContext ResourceContext { get; private set; }
+        public InputHandler InputHandler { get; private set; }
 
         public IGarageRepository<Vehicle> Garage { get; set; }
 
@@ -40,13 +43,13 @@ namespace Övning_5_Business_Layer
         
         public void FindVehicleByAttributes()
         {           
-            Dictionary<String, String> attributes = Input.InputAttributes();                    
+            Dictionary<String, String> attributes = InputHandler.InputAttributes();                    
             ListVehiclesByPredicate(attributes);
         }
 
         public void FindVehicleByLicense()
         {
-            String license = Input.InputLicense();
+            String license = InputHandler.InputLicense();
 
             if(license != null)
             {
@@ -65,7 +68,7 @@ namespace Övning_5_Business_Layer
             }
             else
             {              
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Search_Failed") + ": " + license, ConsoleColor.DarkRed, 1, 2);                
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Search_Failed") + ": " + license, ConsoleColor.DarkRed, 1, 2);                
             }
 
         }
@@ -88,7 +91,7 @@ namespace Övning_5_Business_Layer
         {           
             if(Garage.Count() == 0)
             {
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Empty_Garage"),ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Empty_Garage"),ConsoleColor.Red);
                 return;
             }
 
@@ -104,7 +107,7 @@ namespace Övning_5_Business_Layer
 
             if (Garage.Count() == 0)
             {
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Empty_Garage"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Empty_Garage"), ConsoleColor.Red);
                 return;
             }
 
@@ -114,7 +117,7 @@ namespace Övning_5_Business_Layer
             {
                 Console.WriteLine();
                 WriteType(viechleType.Key);
-                Console.WriteLine(ResourceManager.GetString("Vehicle_Count") + ": " + viechleType.Count());
+                Console.WriteLine(ResourceContext.Language.GetString("Vehicle_Count") + ": " + viechleType.Count());
 
                 /*ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key.Name + 
                                                     Environment.NewLine +
@@ -129,7 +132,7 @@ namespace Övning_5_Business_Layer
 
             while (!validInput)
             {
-                Console.WriteLine(ResourceManager.GetString("Input_License_Number") + ":");
+                Console.WriteLine(ResourceContext.Language.GetString("Input_License_Number") + ":");
                 String licensePlate = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                 String pattern = @"[a-zA-Z]{3}\d{3}";
@@ -144,18 +147,18 @@ namespace Övning_5_Business_Layer
                     if (vehicle != null)
                     {
                         Garage.Remove(vehicle);                    
-                        ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Leaving_Vehicle"));
+                        ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Leaving_Vehicle"));
                         Write(vehicle);                    
                     }
                     else
                     {
-                        Console.WriteLine(ResourceManager.GetString("Search_License_Not_Found") + ": " + licensePlate);
+                        Console.WriteLine(ResourceContext.Language.GetString("Search_License_Not_Found") + ": " + licensePlate);
                     }                  
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine(ResourceManager.GetString("Invalid_Input"));
+                    Console.WriteLine(ResourceContext.Language.GetString("Invalid_Input"));
                     Console.ForegroundColor = ConsoleColor.White;
                 }
 
@@ -164,11 +167,11 @@ namespace Övning_5_Business_Layer
         
         public void Park()
         {
-            Vehicle vehicle = Input.InputVehicle();
+            Vehicle vehicle = InputHandler.InputVehicle();
 
             if (vehicle != null)          
             {              
-                ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Parking_Vehicle"));
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Parking_Vehicle"));
                 Write(vehicle);
                 Garage.Add(vehicle); 
             }
@@ -180,7 +183,7 @@ namespace Övning_5_Business_Layer
 
             while (!successfullParse)
             {
-                Console.Write(ResourceManager.GetString("Menu_Input_Capacity") + ": ");
+                Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity") + ": ");
 
                 successfullParse = Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int capacity);
 
@@ -192,13 +195,13 @@ namespace Övning_5_Business_Layer
                     }
                     else
                     {                        
-                        ConsoleWrapper.WriteLine(ResourceManager.GetString("Capacity_Failed_Validation"), ConsoleColor.Red);
+                        ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Capacity_Failed_Validation"), ConsoleColor.Red);
                         successfullParse = false;
                     }
                 }
                 else
                 {
-                    ConsoleWrapper.WriteLine(ResourceManager.GetString("Invalid_Input"), ConsoleColor.Red);
+                    ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
                 }
             }
         }
@@ -209,9 +212,9 @@ namespace Övning_5_Business_Layer
 
             foreach (var prop in vehicle.GetProperties())
             {
-                string resource = vehicle.propertyNameToResource[prop.Key];
+                string resourceId = ResourceContext.PropertyToId.GetString(prop.Key);                
 
-                ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceManager.GetString(resource),
+                ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceContext.Language.GetString(resourceId),
                                                                         prop.Value},
                                                         new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.Blue });
             }
@@ -219,7 +222,7 @@ namespace Övning_5_Business_Layer
 
         private void WriteType(Type type)
         {
-            ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceManager.GetString("Vehicle_Type"),
+            ConsoleWrapper.WriteLine("{0}: {1}",    new object[] {  ResourceContext.Language.GetString("Vehicle_Type"),
                                                                     type.Name},
                                                     new ConsoleColor[] {  ConsoleColor.Yellow, ConsoleColor.Blue});
         }

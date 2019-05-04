@@ -16,20 +16,17 @@ namespace Övning_5_Data_Access_Layer
         public Object value;
         public Type type;
         public TryParse tryParse;
+        public List<string> arguments;
     }
 
     public abstract class Vehicle
     {
-        
+
         public Vehicle(String licensePlate)
         {
             LicensePlate = licensePlate;
-
-            propertyNameToResource.Add("LicensePlate", "Vehicle_License_Plate");
         }
-
-        public Dictionary<string, string> propertyNameToResource = new Dictionary<string, string>();
-
+        
         private String licensePlate;
 
         public String LicensePlate
@@ -37,7 +34,7 @@ namespace Övning_5_Data_Access_Layer
             get { return licensePlate; }
             set { licensePlate = value; }
         }
-       
+         
         public static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();
@@ -48,6 +45,11 @@ namespace Övning_5_Data_Access_Layer
                 r = s;
                 return true;
             };
+
+            List<string> arguments = new List<string>();
+            arguments.Add("ABC123");
+
+            parameterInfo.arguments = arguments;
 
             List<ParameterInfo> parameters = new List<ParameterInfo>();
             parameters.Add(parameterInfo);

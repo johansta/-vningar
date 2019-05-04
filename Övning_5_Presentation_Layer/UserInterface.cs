@@ -2,25 +2,27 @@
 
 using Övning_5_Tools;
 
-using Övning_5_Business_Layer;
-using Övning_5_Data_Access_Layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
+using Övning_5_Resources;
 
 namespace Övning_5_Presentation_Layer
 {
     public abstract class UserInterface
     {
-        protected UserInterface(ResourceManager resourceManager)
+        protected UserInterface(ResourceContext resourceContext, InputHandler inputHandler, ValidationHandler validationHandler)
         {
-            ResourceManager = resourceManager;
+            ResourceContext = resourceContext;
+            InputHandler = inputHandler;
+            ValidationHandler = validationHandler;
         }
 
-        public ResourceManager ResourceManager { get; protected set; }
+        public ResourceContext ResourceContext { get; protected set; }
+        public InputHandler InputHandler { get; set; }
+        public ValidationHandler ValidationHandler { get; private set; }
+
         protected String header;
         protected List<MenuItem> menuItems;
         private bool running;
@@ -63,7 +65,7 @@ namespace Övning_5_Presentation_Layer
 
             while (running)
             {
-                ConsoleWrapper.WritePreLine(ResourceManager.GetString("Input_Command") + " ", 2);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + " ", 2);
 
                 String input = ConsoleWrapper.ReadLine(ConsoleColor.Green);
 
@@ -86,7 +88,7 @@ namespace Övning_5_Presentation_Layer
 
                 if (!success)
                 {
-                    ConsoleWrapper.WritePreLine(ResourceManager.GetString("Invalid_Command"), ConsoleColor.Red);
+                    ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Command"), ConsoleColor.Red);
                 }
             }
         }
