@@ -22,12 +22,7 @@ namespace Övning_5_Presentation_Layer
             String pattern = ResourceContext.PropertyToRegExp.GetString(property);           
             Regex regex = new Regex(pattern);
 
-            if(regex.IsMatch(input))
-            {
-                return true;
-            }
-
-            return false;
+            return regex.IsMatch(input);           
         }        
     }
 }
