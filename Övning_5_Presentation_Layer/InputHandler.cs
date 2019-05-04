@@ -126,7 +126,7 @@ namespace Övning_5_Presentation_Layer
             return null;
         }
 
-        public Dictionary<string, string> InputAttributes()
+        public Dictionary<string, string> InputAttributes()//TODO:Validation code
         {
             Dictionary<string, string> attributeDictionary = new Dictionary<string, string>();
            

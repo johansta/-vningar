@@ -15,7 +15,7 @@ namespace Övning_5_Presentation_Layer.UserInterfaces
 
             menuItems = new List<MenuItem>();
 
-            menuItems.Add(new MenuItem('c', ResourceContext.Language.GetString("Menu_Create_Garage"), () => { garageHandler.SetGarageCapacity();
+            menuItems.Add(new MenuItem('c', ResourceContext.Language.GetString("Menu_Create_Garage"), () => { garageHandler.InputGarageCapacity();
                                                                                                      garageMenu.Run();}));
             menuItems.Add(new MenuItem('h', ResourceContext.Language.GetString("Menu_Help"), ListHelp));
             menuItems.Add(new MenuItem('q', ResourceContext.Language.GetString("Menu_Exit"), Exit));

@@ -15,17 +15,18 @@ namespace Övning_5_Presentation_Layer
     {
         private static GarageHandler instance;
 
-        private GarageHandler(ResourceContext resourceContext, InputHandler inputHandler)
+        private GarageHandler(ResourceContext resourceContext, InputHandler inputHandler, ValidationHandler validationHandler)
         {
             ResourceContext = resourceContext;
             InputHandler = inputHandler;
+            ValidationHandler = validationHandler;
         }
 
-        public static GarageHandler GetInstance(ResourceContext resourceContext, InputHandler inputHandler)
+        public static GarageHandler GetInstance(ResourceContext resourceContext, InputHandler inputHandler, ValidationHandler validationHandler)
         {
             if (GarageHandler.instance == null)
             {
-                GarageHandler.instance = new GarageHandler(resourceContext, inputHandler);
+                GarageHandler.instance = new GarageHandler(resourceContext, inputHandler, validationHandler);
             }
 
             return GarageHandler.instance;
@@ -33,6 +34,7 @@ namespace Övning_5_Presentation_Layer
 
         public ResourceContext ResourceContext { get; private set; }
         public InputHandler InputHandler { get; private set; }
+        public ValidationHandler ValidationHandler { get; private set; }
 
         public IGarageRepository<Vehicle> Garage { get; set; }
 
@@ -44,16 +46,16 @@ namespace Övning_5_Presentation_Layer
         public void FindVehicleByAttributes()
         {           
             Dictionary<String, String> attributes = InputHandler.InputAttributes();                    
-            ListVehiclesByPredicate(attributes);
+            ListVehiclesWithAttributes(attributes);
         }
 
         public void FindVehicleByLicense()
         {
-            String license = InputHandler.InputLicense();
+            String input = InputHandler.InputLicense();
 
-            if(license != null)
+            if (!String.IsNullOrWhiteSpace(input) && ValidationHandler.Validate(input, "LicensePlate"))
             {
-                ListVehiclesByLicensePlate(license);
+                ListVehiclesByLicensePlate(input);
             }
         }
 
@@ -73,7 +75,7 @@ namespace Övning_5_Presentation_Layer
 
         }
 
-        private void ListVehiclesByPredicate(Dictionary<String, String> attributes)
+        private void ListVehiclesWithAttributes(Dictionary<String, String> attributes)
         {
             IEnumerable<Vehicle> result = Garage.Find(attributes).ToList();
 
@@ -118,11 +120,6 @@ namespace Övning_5_Presentation_Layer
                 Console.WriteLine();
                 WriteType(viechleType.Key);
                 Console.WriteLine(ResourceContext.Language.GetString("Vehicle_Count") + ": " + viechleType.Count());
-
-                /*ConsoleWrapper.WritePreLinePostLine(ResourceManager.GetString("Vehicle_Type") + ": " + viechleType.Key.Name + 
-                                                    Environment.NewLine +
-                                                    ResourceManager.GetString("Vehicle_Count") + ": " + viechleType.Count(),                                                    
-                                                    ConsoleColor.Green);*/
             }
         }
 
@@ -133,16 +130,13 @@ namespace Övning_5_Presentation_Layer
             while (!validInput)
             {
                 Console.WriteLine(ResourceContext.Language.GetString("Input_License_Number") + ":");
-                String licensePlate = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-
-                String pattern = @"[a-zA-Z]{3}\d{3}";
-                Regex regex = new Regex(pattern);
-
-                if(!String.IsNullOrWhiteSpace(licensePlate) && licensePlate.Length == 6 && regex.IsMatch(licensePlate) )
+                String input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+               
+                if(!String.IsNullOrWhiteSpace(input) && ValidationHandler.Validate(input, "LicensePlate"))
                 {
                     validInput = true;
 
-                    Vehicle vehicle = Garage.Find(licensePlate);
+                    Vehicle vehicle = Garage.Find(input);
 
                     if (vehicle != null)
                     {
@@ -152,7 +146,7 @@ namespace Övning_5_Presentation_Layer
                     }
                     else
                     {
-                        Console.WriteLine(ResourceContext.Language.GetString("Search_License_Not_Found") + ": " + licensePlate);
+                        Console.WriteLine(ResourceContext.Language.GetString("Search_License_Not_Found") + ": " + input);
                     }                  
                 }
                 else
@@ -177,27 +171,21 @@ namespace Övning_5_Presentation_Layer
             }
         }
      
-        public void SetGarageCapacity()
+        public void InputGarageCapacity()
         {         
-            bool successfullParse = false;
+            bool validInput = false;
 
-            while (!successfullParse)
+            while (!validInput)
             {
                 Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity") + ": ");
+                string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
-                successfullParse = Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int capacity);
-
-                if (successfullParse)
+                if (!String.IsNullOrWhiteSpace(input) && 
+                    ValidationHandler.Validate(input, "Capacity") && 
+                    Int32.TryParse(input, out int capacity))
                 {
-                    if (capacity >= 1)
-                    {
-                        SetCapacity(capacity);
-                    }
-                    else
-                    {                        
-                        ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Capacity_Failed_Validation"), ConsoleColor.Red);
-                        successfullParse = false;
-                    }
+                    validInput = true;
+                    SetCapacity(capacity);
                 }
                 else
                 {

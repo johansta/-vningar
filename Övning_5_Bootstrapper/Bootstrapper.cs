@@ -28,7 +28,7 @@ namespace Övning_5_Bootstrapper
             ValidationHandler validationHandler = new ValidationHandler(resourceContext);
             InputHandler inputHandler = new InputHandler(resourceContext, validationHandler);
 
-            GarageHandler garageHandler = GarageHandler.GetInstance(resourceContext, inputHandler);
+            GarageHandler garageHandler = GarageHandler.GetInstance(resourceContext, inputHandler, validationHandler);
           
             UserInterface mainMenu = new MainMenu(resourceContext, inputHandler, validationHandler, garageHandler);       
             mainMenu.Run();   
