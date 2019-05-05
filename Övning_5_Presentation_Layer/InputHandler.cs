@@ -99,7 +99,7 @@ namespace Övning_5_Presentation_Layer
         
         public string InputAndValidateLicense()
         {           
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Number_To_Search_For"));
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Search_For"));
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
             string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
