@@ -190,7 +190,7 @@
     <value>Invalid command, try again!</value>
   </data>
   <data name="Invalid_Input" xml:space="preserve">
-    <value>Invalid_Input, try again!</value>
+    <value>Invalid input, try again!</value>
   </data>
   <data name="Invalid_Option" xml:space="preserve">
     <value>Invalid option, try again!</value>

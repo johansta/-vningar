@@ -59,21 +59,7 @@ namespace Övning_5_Presentation_Layer
                new ConsoleColor[] { ConsoleColor.Yellow });
 
             ConsoleWrapper.Write("(", ConsoleColor.White);         
-            ConsoleWrapper.Write(ResourceContext.Language.GetString(param.name + "_Range"), ConsoleColor.Blue);
-
-            /*for (int j = 0; j < param.arguments.Count; j++)
-            {
-                if (j == param.arguments.Count - 1)
-                {
-                    ConsoleWrapper.Write(param.arguments[j], ConsoleColor.Blue);
-                }
-                else
-                {
-                    ConsoleWrapper.Write(param.arguments[j], ConsoleColor.Blue);
-                    ConsoleWrapper.Write(", ", ConsoleColor.White);
-                }
-            }*/
-
+            ConsoleWrapper.Write(ResourceContext.Language.GetString(param.name + "_Range"), ConsoleColor.Blue);           
             ConsoleWrapper.WriteLine("):", ConsoleColor.White);
         }
 
@@ -111,20 +97,20 @@ namespace Övning_5_Presentation_Layer
             return vehicleFactory.GetVehicle(inputVehicleType, parameters);
         }
         
-        public string InputLicense()
+        public string InputAndValidateLicense()
         {           
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Number_To_Search_For"));
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
-
             string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
-            if (!String.IsNullOrWhiteSpace(input) &&
-                ValidationHandler.Validate(input, "LicensePlate"))
+            while (String.IsNullOrWhiteSpace(input) || !ValidationHandler.Validate(input, "LicensePlate"))
             {
-                return input;
-            }
+                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
+                input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            }                    
 
-            return null;
+            return input;
         }
 
         public Dictionary<string, string> InputAttributes()//TODO:Validation code

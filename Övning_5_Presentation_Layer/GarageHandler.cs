@@ -51,12 +51,8 @@ namespace Övning_5_Presentation_Layer
 
         public void FindVehicleByLicense()
         {
-            String input = InputHandler.InputLicense();
-
-            if (!String.IsNullOrWhiteSpace(input) && ValidationHandler.Validate(input, "LicensePlate"))
-            {
-                ListVehiclesByLicensePlate(input);
-            }
+            string input = InputHandler.InputAndValidateLicense();
+            ListVehiclesByLicensePlate(input);
         }
 
         private void ListVehiclesByLicensePlate(String license)
@@ -69,8 +65,11 @@ namespace Övning_5_Presentation_Layer
                 Write(vehicle);        
             }
             else
-            {              
-                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Search_Failed") + ": " + license, ConsoleColor.DarkRed, 1, 2);                
+            {
+                Console.WriteLine();
+                ConsoleWrapper.WriteLine("{0}: {1}",
+                                            new object[] { ResourceContext.Language.GetString("Search_Failed"), license },
+                                            new ConsoleColor[] {ConsoleColor.White,ConsoleColor.Blue});
             }
 
         }
@@ -125,37 +124,29 @@ namespace Övning_5_Presentation_Layer
 
         public void Drive()
         {
-            bool validInput = false;
+            Console.WriteLine(ResourceContext.Language.GetString("Input_License_Plate") + ":");
+            ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
+            string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+      
+            while (String.IsNullOrWhiteSpace(input) || !ValidationHandler.Validate(input, "LicensePlate"))
+            {             
+                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
+                input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            }
 
-            while (!validInput)
+            Vehicle vehicle = Garage.Find(input);
+
+            if (vehicle != null)
             {
-                Console.WriteLine(ResourceContext.Language.GetString("Input_License_Number") + ":");
-                String input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-               
-                if(!String.IsNullOrWhiteSpace(input) && ValidationHandler.Validate(input, "LicensePlate"))
-                {
-                    validInput = true;
-
-                    Vehicle vehicle = Garage.Find(input);
-
-                    if (vehicle != null)
-                    {
-                        Garage.Remove(vehicle);                    
-                        ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Leaving_Vehicle"));
-                        Write(vehicle);                    
-                    }
-                    else
-                    {
-                        Console.WriteLine(ResourceContext.Language.GetString("Search_License_Not_Found") + ": " + input);
-                    }                  
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine(ResourceContext.Language.GetString("Invalid_Input"));
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-
+                Garage.Remove(vehicle);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Leaving_Vehicle"));
+                Write(vehicle);
+            }
+            else
+            {
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Search_License_Plate_Not_Found") + ": ", ConsoleColor.White);
+                ConsoleWrapper.WriteLine(input, ConsoleColor.Blue);
             }
         }
         
@@ -177,7 +168,12 @@ namespace Övning_5_Presentation_Layer
 
             while (!validInput)
             {
-                Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity") + ": ");
+                Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity"));
+
+                ConsoleWrapper.Write("(", ConsoleColor.White);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Capacity_Range"), ConsoleColor.Blue);
+                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
                 string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                 if (!String.IsNullOrWhiteSpace(input) && 
