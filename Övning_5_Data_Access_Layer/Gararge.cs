@@ -22,7 +22,7 @@ namespace Övning_5_Data_Access_Layer
         
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < Occupied; i++)
+            for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] != null)
                 {
@@ -36,22 +36,44 @@ namespace Övning_5_Data_Access_Layer
             return GetEnumerator();
         }
 
-        public void Add(T vehicle)
+        public bool Add(T vehicle)
         {
-            vehicles[Occupied++] = vehicle;
+            if(Occupied >= Capacity)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if (vehicles[i] == null)
+                {
+                    vehicles[i] = vehicle;
+                    Occupied++;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        public void Remove(T vehicle)
+        public bool Remove(T vehicle)
         {
-            var cars = vehicles.Where(x => x?.LicensePlate.ToUpper() != vehicle.LicensePlate.ToUpper());
-            vehicles = cars.ToArray();
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if (vehicles[i]?.LicensePlate == vehicle?.LicensePlate)
+                {
+                    vehicles[i] = null;
+                    Occupied--;
+                    return true;
+                }
+            }
 
-            Occupied--;
+            return false;
         }
 
         public void Clear()
         {
-            for (int i = 0; i < Occupied; i++)
+            for (int i = 0; i < vehicles.Length; i++)
             {
                 vehicles[i] = null;
             }
@@ -62,13 +84,8 @@ namespace Övning_5_Data_Access_Layer
         public T Find(string licensePlate)
         {
             IEnumerable<T> result = vehicles.Where((x) =>
-            {
-                if (x == null)
-                {
-                    return false;
-                }
-
-                if (x.LicensePlate.ToUpper().Equals(licensePlate.ToUpper()))
+            {               
+                if (x?.LicensePlate == licensePlate.ToUpper())
                 {
                     return true;
                 }
@@ -100,7 +117,7 @@ namespace Övning_5_Data_Access_Layer
 
                     if(x.GetProperties().TryGetValue(kvp.Key, out string value))
                     {
-                        if (value.Equals(kvp.Value)) {
+                        if (value == kvp.Value) {
                             return true;
                         }                  
                     }

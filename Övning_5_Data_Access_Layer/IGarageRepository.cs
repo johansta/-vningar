@@ -6,8 +6,8 @@ namespace Övning_5_Data_Access_Layer
 {
     public interface IGarageRepository<T> : IEnumerable<T> where T : Vehicle
     {
-        void Add(T vehicle);
-        void Remove(T vehicle);
+        bool Add(T vehicle);
+        bool Remove(T vehicle);
         void Clear();
 
         int Capacity { get; }

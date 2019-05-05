@@ -147,6 +147,9 @@
   <data name="Garage_Empty" xml:space="preserve">
     <value>Garaget är tomt!</value>
   </data>
+  <data name="Garage_Full" xml:space="preserve">
+    <value>Garaget är fullt!</value>
+  </data>
   <data name="Help_Blue" xml:space="preserve">
     <value>Blå</value>
   </data>

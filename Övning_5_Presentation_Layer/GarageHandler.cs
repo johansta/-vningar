@@ -67,9 +67,9 @@ namespace Övning_5_Presentation_Layer
             ListVehiclesByLicensePlate(input);
         }
 
-        private void ListVehiclesByLicensePlate(String license)
+        private void ListVehiclesByLicensePlate(String licensePlate)
         {
-            Vehicle vehicle = Garage.Find(license);
+            Vehicle vehicle = Garage.Find(licensePlate);
           
             if(vehicle != null)
             {
@@ -80,7 +80,7 @@ namespace Övning_5_Presentation_Layer
             {
                 Console.WriteLine();
                 ConsoleWrapper.WriteLine("{0}: {1}",
-                                            new object[] { ResourceContext.Language.GetString("Search_Failed"), license },
+                                            new object[] { ResourceContext.Language.GetString("Search_Failed"), licensePlate },
                                             new ConsoleColor[] {ConsoleColor.White,ConsoleColor.Blue});
             }
 
@@ -123,12 +123,6 @@ namespace Övning_5_Presentation_Layer
 
         public void ListVehicles()
         {           
-            /*if(Garage.Count() == 0)
-            {
-                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
-                return;
-            }*/
-
             foreach (var vehicle in Garage)
             {
                 Console.WriteLine();
@@ -143,8 +137,7 @@ namespace Övning_5_Presentation_Layer
 
         public void ListByVehicleType()
         {
-
-            if (Garage.Count() == 0)
+            if (Garage.Occupied == 0)
             {
                 ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
                 return;
@@ -162,7 +155,7 @@ namespace Övning_5_Presentation_Layer
 
         public void Drive()
         {
-            if (Garage.Count() == 0)
+            if (Garage.Occupied == 0)
             {
                 ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
                 return;
@@ -196,6 +189,12 @@ namespace Övning_5_Presentation_Layer
         
         public void Park()
         {
+            if (Garage.Occupied >= Garage.Capacity)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Full"));
+                return;
+            }
+
             Vehicle vehicle = InputHandler.InputVehicle();
 
             if (vehicle != null)          

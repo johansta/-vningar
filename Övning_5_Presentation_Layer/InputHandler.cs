@@ -149,6 +149,11 @@ namespace Övning_5_Presentation_Layer
                 string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                 inputValue = ValidateAndInputAttributeValue(name, inputValue);
+                
+                if(name == "LicensePlate")
+                {
+                    inputValue = inputValue.ToUpper();
+                }
 
                 attributeDictionary.Add(name, inputValue);
             }

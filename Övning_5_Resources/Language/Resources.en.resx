@@ -147,6 +147,9 @@
   <data name="Garage_Empty" xml:space="preserve">
     <value>The garage is empty!</value>
   </data>
+  <data name="Garage_Full" xml:space="preserve">
+    <value>The garage is full!</value>
+  </data>
   <data name="Help_Blue" xml:space="preserve">
     <value>Blue</value>
   </data>
