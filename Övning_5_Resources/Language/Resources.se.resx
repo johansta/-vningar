@@ -211,7 +211,7 @@
     <value>Skapa ett garage</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Kör fordon!</value>
+    <value>Kör fordon</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Avsluta program</value>
@@ -263,6 +263,9 @@
   </data>
   <data name="NumberOfSeats_Range" xml:space="preserve">
     <value>1 till 512</value>
+  </data>
+  <data name="Parking_Failed" xml:space="preserve">
+    <value>Parkering misslyckades. Ett fordon med samma registreringsskylt finns redan i garaget.</value>
   </data>
   <data name="Parking_Vehicle" xml:space="preserve">
     <value>Parkerar fordon!</value>

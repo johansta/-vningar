@@ -211,7 +211,7 @@
     <value>Create a garage with specific capacity</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
-    <value>Drive a vehicle!</value>
+    <value>Drive a vehicle</value>
   </data>
   <data name="Menu_Exit" xml:space="preserve">
     <value>Exit application</value>
@@ -263,6 +263,9 @@
   </data>
   <data name="NumberOfSeats_Range" xml:space="preserve">
     <value>1 to 512</value>
+  </data>
+  <data name="Parking_Failed" xml:space="preserve">
+    <value>Parking failed. A vehicle with the same license plate already exist in the garage.</value>
   </data>
   <data name="Parking_Vehicle" xml:space="preserve">
     <value>Parking vehicle!</value>

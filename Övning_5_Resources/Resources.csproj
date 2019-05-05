@@ -64,6 +64,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.se.resx</DependentUpon>
     </Compile>
+    <Compile Include="PropertyMapping\PropertyToRegExp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropertyToRegExp.resx</DependentUpon>
+    </Compile>
     <Compile Include="ResourceContext.cs" />
   </ItemGroup>
   <ItemGroup>

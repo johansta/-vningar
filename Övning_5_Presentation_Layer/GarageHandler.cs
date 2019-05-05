@@ -198,7 +198,15 @@ namespace Övning_5_Presentation_Layer
             Vehicle vehicle = InputHandler.InputVehicle();
 
             if (vehicle != null)          
-            {              
+            {
+                Vehicle parkedVehicle = Garage.Find(vehicle.LicensePlate);
+
+                if(parkedVehicle != null)
+                {
+                    ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Parking_Failed"));
+                    return;
+                }
+
                 ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Parking_Vehicle"));
                 Write(vehicle);
                 Garage.Add(vehicle); 

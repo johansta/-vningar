@@ -132,7 +132,7 @@
     <value>^[1-2]$</value>
   </data>
   <data name="NumberOfEngines" xml:space="preserve">
-    <value>^([1-5][0-9]?)$|^(6[0-4])$</value>
+    <value>^([1-9])$|^([1-5][0-9]?)$|^(6[0-4])$</value>
     <comment>1 to 64</comment>
   </data>
   <data name="NumberOfParachutes" xml:space="preserve">
