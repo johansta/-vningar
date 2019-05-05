@@ -113,27 +113,97 @@ namespace Övning_5_Presentation_Layer
             return input;
         }
 
-        public Dictionary<string, string> InputAttributes()//TODO:Validation code
-        {
+        public Dictionary<string, string> InputAttributes(List<string> allAttributes)
+        {           
             Dictionary<string, string> attributeDictionary = new Dictionary<string, string>();
            
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For") + ":");
 
-            if (Int32.TryParse(ConsoleWrapper.ReadLine(ConsoleColor.Blue), out int numberOfAttributes))
+            string inputNumberOfAttributes = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            int numberOfAttributes = ValidateAndParseAndInputAttributeValue("NumberOfAttributes", inputNumberOfAttributes);
+
+            for (int i = 0; i < numberOfAttributes; i++)
             {
-                for (int i = 0; i < numberOfAttributes; i++)
+                Console.WriteLine(Environment.NewLine + ResourceContext.Language.GetString("Menu_Attribute_Types") + Environment.NewLine);
+
+                for (int j = 0; j < allAttributes.Count; j++)
                 {
-                    ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Name") + ":");
-                    string name = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+                    ConsoleWrapper.WriteLine("{0} -> {1}",
+                        new object[] { j, allAttributes[j] },
+                        new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White });
+                }
 
-                    ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Value") + ":");
-                    string value = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
 
-                    attributeDictionary.Add(name, value);
-                }               
+                int inputAttributeIndex = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
+                inputAttributeIndex = ValidateAndInputAttributeIndex(allAttributes, inputAttributeIndex);
+
+                string name = allAttributes[inputAttributeIndex];
+
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Value") + ":");
+
+                ConsoleWrapper.Write("(", ConsoleColor.White);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString(name + "_Range"), ConsoleColor.Blue);
+                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
+                string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
+                inputValue = ValidateAndInputAttributeValue(name, inputValue);
+
+                attributeDictionary.Add(name, inputValue);
             }
+            
 
             return attributeDictionary;
+        }
+
+        private static string ValidateAndInputNumAttributeValue(string name, string inputValue)
+        {
+            while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
+            {
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            }
+
+            return inputValue;
+        }
+
+        private static int ValidateAndInputAttributeIndex(List<string> allAttributes, int input)
+        {
+            while (!(input >= 0 && input < allAttributes.Count))
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
+                input = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
+            }
+
+            return input;
+        }
+
+        private static string ValidateAndInputAttributeValue(string name, string inputValue)
+        {      
+            while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
+            {
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            }
+
+            return inputValue;
+        }
+
+        private static int ValidateAndParseAndInputAttributeValue(string name, string inputValue)
+        {
+            int outputValue;
+
+            while (String.IsNullOrWhiteSpace(inputValue) || 
+                    !ValidationHandler.Validate(inputValue, name) ||
+                    !Int32.TryParse(inputValue, out outputValue))
+            {
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+            }
+
+            return outputValue;
         }
 
         //Using reflection

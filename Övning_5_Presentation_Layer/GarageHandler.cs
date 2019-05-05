@@ -44,13 +44,25 @@ namespace Övning_5_Presentation_Layer
         }
         
         public void FindVehicleByAttributes()
-        {           
-            Dictionary<String, String> attributes = InputHandler.InputAttributes();                    
+        {
+            if (Garage.Count() == 0)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
+                return;
+            }
+
+            Dictionary<String, String> attributes = InputHandler.InputAttributes(GetAllAttributes());                    
             ListVehiclesWithAttributes(attributes);
         }
 
         public void FindVehicleByLicense()
-        {
+        {          
+            if (Garage.Count() == 0)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
+                return;
+            }
+
             string input = InputHandler.InputAndValidateLicense();
             ListVehiclesByLicensePlate(input);
         }
@@ -74,9 +86,30 @@ namespace Övning_5_Presentation_Layer
 
         }
 
+        public List<string> GetAllAttributes()
+        {
+            List<string> attributes = new List<string>();
+
+            foreach (var vehicle in Garage)
+            {
+                foreach (var key in vehicle.GetProperties().Keys)
+                {
+                    attributes.Add(key);
+                }           
+            }
+
+            return attributes.Distinct().ToList();
+        }
+
         private void ListVehiclesWithAttributes(Dictionary<String, String> attributes)
         {
             IEnumerable<Vehicle> result = Garage.Find(attributes).ToList();
+
+            if(result.Count() == 0)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Search_Attribute_Not_Found"));
+                return;
+            }
 
             Console.WriteLine();
 
@@ -90,17 +123,22 @@ namespace Övning_5_Presentation_Layer
 
         public void ListVehicles()
         {           
-            if(Garage.Count() == 0)
+            /*if(Garage.Count() == 0)
             {
-                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Empty_Garage"),ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
                 return;
-            }
+            }*/
 
             foreach (var vehicle in Garage)
             {
                 Console.WriteLine();
                 Write(vehicle);
             }
+
+            Console.WriteLine();
+            ConsoleWrapper.WriteLine("Garaget har totalt {0} parkeringsplatser. {1} är nu upptagna!",
+                                    new object[] { Garage.Capacity, Garage.Count() },
+                                    new ConsoleColor[] { ConsoleColor.Blue,ConsoleColor.Blue});
         }
 
         public void ListByVehicleType()
@@ -108,7 +146,7 @@ namespace Övning_5_Presentation_Layer
 
             if (Garage.Count() == 0)
             {
-                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Empty_Garage"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
                 return;
             }
 
@@ -124,7 +162,13 @@ namespace Övning_5_Presentation_Layer
 
         public void Drive()
         {
-            Console.WriteLine(ResourceContext.Language.GetString("Input_License_Plate") + ":");
+            if (Garage.Count() == 0)
+            {
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Garage_Empty"));
+                return;
+            }
+
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Drive") + " ");
             ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
             string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
       

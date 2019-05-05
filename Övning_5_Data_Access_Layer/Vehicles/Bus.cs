@@ -29,10 +29,10 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 return result;
             };
 
-            List<string> arguments = new List<string>();
+            /*List<string> arguments = new List<string>();
             arguments.Add("1 - 512");
 
-            parameterInfo.arguments = arguments;
+            parameterInfo.arguments = arguments;*/
 
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);

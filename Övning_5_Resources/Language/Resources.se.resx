@@ -141,11 +141,11 @@
   <data name="Car_FuelType" xml:space="preserve">
     <value>Bränsletyp</value>
   </data>
-  <data name="Empty_Garage" xml:space="preserve">
-    <value>Gararget är tomt!</value>
-  </data>
   <data name="FuelType_Range" xml:space="preserve">
     <value>GASOLINE eller DIESEL</value>
+  </data>
+  <data name="Garage_Empty" xml:space="preserve">
+    <value>Garaget är tomt!</value>
   </data>
   <data name="Help_Blue" xml:space="preserve">
     <value>Blå</value>
@@ -174,8 +174,8 @@
   <data name="Input_Command" xml:space="preserve">
     <value>Mata in kommando:</value>
   </data>
-  <data name="Input_License_Plate" xml:space="preserve">
-    <value>Mata in registreringsskylt</value>
+  <data name="Input_License_Plate_To_Drive" xml:space="preserve">
+    <value>Mata in registeringsskylt på fordonet som ska köras!</value>
   </data>
   <data name="Input_License_Plate_To_Search_For" xml:space="preserve">
     <value>Mata in registreringsskylten som ska sökas efter!</value>
@@ -200,6 +200,9 @@
   </data>
   <data name="LicensePlate_Range" xml:space="preserve">
     <value>3 bokstäver föjt av 3 siffror t.ex. ABC123</value>
+  </data>
+  <data name="Menu_Attribute_Types" xml:space="preserve">
+    <value>Attributtyper</value>
   </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
     <value>Skapa ett garage</value>
@@ -240,7 +243,7 @@
   <data name="Menu_Search_Attribute" xml:space="preserve">
     <value>Sök med attribut</value>
   </data>
-  <data name="Menu_Search_License" xml:space="preserve">
+  <data name="Menu_Search_License_Plate" xml:space="preserve">
     <value>Sök med registreringsskylt</value>
   </data>
   <data name="Menu_Vehicle_Types" xml:space="preserve">
@@ -260,6 +263,9 @@
   </data>
   <data name="Parking_Vehicle" xml:space="preserve">
     <value>Parkerar fordon!</value>
+  </data>
+  <data name="Search_Attribute_Not_Found" xml:space="preserve">
+    <value>Inga fordon som matchar attributen kunde hittas!</value>
   </data>
   <data name="Search_Failed" xml:space="preserve">
     <value>Kunde inte hitta något fordon med registreringsskylt</value>
