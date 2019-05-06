@@ -123,6 +123,9 @@
   <data name="Attribute_Name" xml:space="preserve">
     <value>Attibute name</value>
   </data>
+  <data name="Attribute_Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
   <data name="Attribute_Value" xml:space="preserve">
     <value>Attibute value</value>
   </data>
@@ -166,7 +169,7 @@
     <value>Red</value>
   </data>
   <data name="Help_Red_Description" xml:space="preserve">
-    <value>Error</value>
+    <value>User error</value>
   </data>
   <data name="Help_Yellow" xml:space="preserve">
     <value>Yellow</value>

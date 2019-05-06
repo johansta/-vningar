@@ -118,7 +118,7 @@ namespace Övning_5_Presentation_Layer
                 Write(vehicle);
             }
 
-            Console.WriteLine();
+            //Console.WriteLine();
         }
 
         public void ListVehicles()

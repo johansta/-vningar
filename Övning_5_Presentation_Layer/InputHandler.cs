@@ -69,7 +69,7 @@ namespace Övning_5_Presentation_Layer
                                     !ValidationHandler.Validate(input, param.name) ||
                                     !param.tryParse(input, out param.value))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
                 input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
         }
@@ -117,7 +117,9 @@ namespace Övning_5_Presentation_Layer
         {           
             Dictionary<string, string> attributeDictionary = new Dictionary<string, string>();
            
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For") + ":");
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For"));
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
+            Console.Write(":");
 
             string inputNumberOfAttributes = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             int numberOfAttributes = ValidateAndParseAndInputAttributeValue("NumberOfAttributes", inputNumberOfAttributes);
@@ -140,7 +142,9 @@ namespace Övning_5_Presentation_Layer
 
                 string name = allAttributes[inputAttributeIndex];
 
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Value") + ":");
+                string resourceId = ResourceContext.PropertyToId.GetString(name);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
+                Console.Write(":");
 
                 ConsoleWrapper.Write("(", ConsoleColor.White);
                 ConsoleWrapper.Write(ResourceContext.Language.GetString(name + "_Range"), ConsoleColor.Blue);
@@ -149,16 +153,10 @@ namespace Övning_5_Presentation_Layer
                 string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
                 inputValue = ValidateAndInputAttributeValue(name, inputValue);
-                
-                if(name == "LicensePlate")
-                {
-                    inputValue = inputValue.ToUpper();
-                }
-
-                attributeDictionary.Add(name, inputValue);
+                              
+                attributeDictionary.Add(name, inputValue.ToUpper());
             }
             
-
             return attributeDictionary;
         }
 
@@ -166,7 +164,7 @@ namespace Övning_5_Presentation_Layer
         {
             while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
                 inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
 
@@ -189,7 +187,15 @@ namespace Övning_5_Presentation_Layer
         {      
             while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                string resourceId = ResourceContext.PropertyToId.GetString(name);              
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
+                Console.Write(":");
+
+                ConsoleWrapper.Write("(", ConsoleColor.White);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString(name + "_Range"), ConsoleColor.Blue);
+                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
                 inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
 
@@ -204,7 +210,9 @@ namespace Övning_5_Presentation_Layer
                     !ValidationHandler.Validate(inputValue, name) ||
                     !Int32.TryParse(inputValue, out outputValue))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"));
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
+                Console.Write(":");
                 inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
 

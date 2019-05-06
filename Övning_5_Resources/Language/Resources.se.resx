@@ -123,6 +123,9 @@
   <data name="Attribute_Name" xml:space="preserve">
     <value>Atributnamn</value>
   </data>
+  <data name="Attribute_Quantity" xml:space="preserve">
+    <value>Antal</value>
+  </data>
   <data name="Attribute_Value" xml:space="preserve">
     <value>Atributvärde</value>
   </data>
@@ -166,7 +169,7 @@
     <value>Röd</value>
   </data>
   <data name="Help_Red_Description" xml:space="preserve">
-    <value>Fel</value>
+    <value>Användarfel</value>
   </data>
   <data name="Help_Yellow" xml:space="preserve">
     <value>Gul</value>
