@@ -56,10 +56,6 @@
     <Compile Include="ValidationHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Övning_5_Business_Layer\Business Layer.csproj">
-      <Project>{2584134e-54bd-40a3-b212-7c306843636f}</Project>
-      <Name>Business Layer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Övning_5_Data_Access_Layer\Data Access Layer.csproj">
       <Project>{b40b1fe9-d756-4a0c-bb7c-6423c5bdc1cf}</Project>
       <Name>Data Access Layer</Name>
