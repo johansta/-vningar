@@ -14,9 +14,7 @@ namespace Övning_5_Data_Access_Layer
     {
         public String name;
         public Object value;
-        public Type type;
         public TryParse tryParse;
-        //public List<string> arguments;
     }
 
     public abstract class Vehicle
@@ -38,18 +36,12 @@ namespace Övning_5_Data_Access_Layer
         public static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();
-            parameterInfo.name = "LicensePlate";
-            parameterInfo.type = typeof(String);
+            parameterInfo.name = "LicensePlate";        
 
             parameterInfo.tryParse = (string s, out object r) => {                           
                 r = s;
                 return true;
             };
-
-            /*List<string> arguments = new List<string>();
-            arguments.Add("ABC123");
-
-            parameterInfo.arguments = arguments;*/
 
             List<ParameterInfo> parameters = new List<ParameterInfo>();
             parameters.Add(parameterInfo);

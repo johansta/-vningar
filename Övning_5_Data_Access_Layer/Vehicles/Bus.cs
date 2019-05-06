@@ -19,8 +19,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         public new static List<ParameterInfo> GetParameters()
         {
             ParameterInfo parameterInfo = new ParameterInfo();
-            parameterInfo.name = "NumberOfSeats";
-            parameterInfo.type = typeof(int);
+            parameterInfo.name = "NumberOfSeats";          
 
             parameterInfo.tryParse = (string s, out object r) => {
 
@@ -28,12 +27,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
-
-            /*List<string> arguments = new List<string>();
-            arguments.Add("1 - 512");
-
-            parameterInfo.arguments = arguments;*/
-
+           
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);
 

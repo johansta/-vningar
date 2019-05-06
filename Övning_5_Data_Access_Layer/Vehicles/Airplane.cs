@@ -20,7 +20,6 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         {
             ParameterInfo parameterInfo = new ParameterInfo();
             parameterInfo.name = "NumberOfParachutes";
-            parameterInfo.type = typeof(int);
 
             parameterInfo.tryParse = (string s, out object r) => {
 
@@ -28,12 +27,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
-
-            /*List<string> arguments = new List<string>();
-            arguments.Add("0 - 512");
-
-            parameterInfo.arguments = arguments;*/
-
+           
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);
 

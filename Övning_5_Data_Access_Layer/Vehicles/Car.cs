@@ -26,7 +26,6 @@ namespace Övning_5_Data_Access_Layer.Vehicles
         {
             ParameterInfo parameterInfo = new ParameterInfo();
             parameterInfo.name = "FuelType";
-            parameterInfo.type = typeof(FuelType);
          
             parameterInfo.tryParse = (string s, out object r) => {
 
@@ -34,13 +33,7 @@ namespace Övning_5_Data_Access_Layer.Vehicles
                 r = v;
                 return result;
             };
-
-            /*List<string> arguments = new List<string>();
-            arguments.Add(FuelType.GASOLINE.ToString());
-            arguments.Add(FuelType.DIESEL.ToString());
-
-            parameterInfo.arguments = arguments;*/
-
+           
             List<ParameterInfo> parameters = Vehicle.GetParameters();
             parameters.Add(parameterInfo);
 
