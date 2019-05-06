@@ -214,7 +214,7 @@
     <value>Attribute types</value>
   </data>
   <data name="Menu_Create_Garage" xml:space="preserve">
-    <value>Create a garage with specific capacity</value>
+    <value>Create a garage</value>
   </data>
   <data name="Menu_Drive_Vehicle" xml:space="preserve">
     <value>Drive a vehicle</value>
