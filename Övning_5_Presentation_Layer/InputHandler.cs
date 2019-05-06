@@ -36,12 +36,44 @@ namespace Övning_5_Presentation_Layer
             }
         }
 
-        private VehicleType ValidateAndInputVehicleEnum(int input)
+        public int InputGarageCapacity()
         {
+            Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity"));
+
+            ConsoleWrapper.Write("(", ConsoleColor.White);
+            ConsoleWrapper.Write(ResourceContext.Language.GetString("Capacity_Range"), ConsoleColor.Blue);
+            ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
+            string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
+            int outputValue;
+
+            while (String.IsNullOrWhiteSpace(input) ||
+                    !ValidationHandler.Validate(input, "Capacity") ||
+                    !Int32.TryParse(input, out outputValue))
+            {
+                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
+                Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity"));
+                ConsoleWrapper.Write("(", ConsoleColor.White);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Capacity_Range"), ConsoleColor.Blue);
+                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
+                input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);             
+            }
+
+            return outputValue;
+        }
+
+        private VehicleType InputVehicleEnum()
+        {
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + ":");
+
+            int input = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
+
             while (!Enum.IsDefined(typeof(VehicleType), input))
             {
                 ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + ":");
 
                 input = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
             }
@@ -54,7 +86,7 @@ namespace Övning_5_Presentation_Layer
             string resourceId = ResourceContext.PropertyToId.GetString(param.name);
             string name = ResourceContext.Language.GetString(resourceId);
 
-            ConsoleWrapper.Write(Environment.NewLine + ResourceContext.Language.GetString("Input_Value_For") + " {0} ",
+            ConsoleWrapper.Write(Environment.NewLine + ResourceContext.Language.GetString("Input_Value_For") + " {0}",
                new object[] { name },
                new ConsoleColor[] { ConsoleColor.Yellow });
 
@@ -63,8 +95,10 @@ namespace Övning_5_Presentation_Layer
             ConsoleWrapper.WriteLine("):", ConsoleColor.White);
         }
 
-        private void ValidateAndInputArgument(ParameterInfo param, string input)
+        private void InputArgument(ParameterInfo param)
         {
+            string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
             while (String.IsNullOrWhiteSpace(input) ||
                                     !ValidationHandler.Validate(input, param.name) ||
                                     !param.tryParse(input, out param.value))
@@ -78,29 +112,23 @@ namespace Övning_5_Presentation_Layer
         public Vehicle InputVehicle()
         {
             ListVehiclesTypes();
-
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
-
-            int inputEnum = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
-            VehicleType inputVehicleType = ValidateAndInputVehicleEnum(inputEnum);
+      
+            VehicleType inputVehicleType = InputVehicleEnum();
 
             VehicleFactory vehicleFactory = new VehicleFactory();
             List<ParameterInfo> parameters = vehicleFactory.GetParameters(inputVehicleType);
 
             for (int i = 0; i < parameters.Count; i++)
             {            
-                ListArgumentOptions(parameters[i]);
-
-                string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-                ValidateAndInputArgument(parameters[i], input);
+                ListArgumentOptions(parameters[i]);            
+                InputArgument(parameters[i]);
             }
 
             return vehicleFactory.GetVehicle(inputVehicleType, parameters);
         }
         
-        public string InputAndValidateLicense()
-        {           
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Search_For"));
+        public string InputLicensePlate()
+        {                     
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
             string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
 
@@ -113,19 +141,14 @@ namespace Övning_5_Presentation_Layer
 
             return input;
         }
-
+       
         public Dictionary<string, string> InputAttributes(List<string> allAttributes)
         {           
             Dictionary<string, string> attributeDictionary = new Dictionary<string, string>();
            
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For"));          
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
-            ConsoleWrapper.Write("(", ConsoleColor.White);
-            ConsoleWrapper.Write(ResourceContext.Language.GetString("Attribute_Range"), ConsoleColor.Blue);
-            ConsoleWrapper.WriteLine("):", ConsoleColor.White);
-
-            string inputNumberOfAttributes = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-            int numberOfAttributes = ValidateAndParseAndInputAttributeValue("NumberOfAttributes", inputNumberOfAttributes);
+           
+            int numberOfAttributes = InputAttributeQuantity("NumberOfAttributes");
 
             for (int i = 0; i < numberOfAttributes; i++)
             {
@@ -137,25 +160,10 @@ namespace Övning_5_Presentation_Layer
                         new object[] { j, allAttributes[j] },
                         new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White });
                 }
-
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
-
-                int inputAttributeIndex = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
-                inputAttributeIndex = ValidateAndInputAttributeIndex(allAttributes, inputAttributeIndex);
-
-                string name = allAttributes[inputAttributeIndex];
-
-                string resourceId = ResourceContext.PropertyToId.GetString(name);
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
-                Console.Write(":");
-
-                ConsoleWrapper.Write("(", ConsoleColor.White);
-                ConsoleWrapper.Write(ResourceContext.Language.GetString(name + "_Range"), ConsoleColor.Blue);
-                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
-
-                string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-
-                inputValue = ValidateAndInputAttributeValue(name, inputValue);
+             
+                int inputAttributeIndex = InputAttributeIndex(allAttributes);
+                string name = allAttributes[inputAttributeIndex];                              
+                string inputValue = InputAttributeValue(name);
                               
                 attributeDictionary.Add(name, inputValue.ToUpper());
             }
@@ -163,35 +171,38 @@ namespace Övning_5_Presentation_Layer
             return attributeDictionary;
         }
 
-        private static string ValidateAndInputNumAttributeValue(string name, string inputValue)
+        private int InputAttributeIndex(List<string> allAttributes)
         {
-            while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
-            {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
-                inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-            }
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + ":");
+            int input = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
 
-            return inputValue;
-        }
-
-        private static int ValidateAndInputAttributeIndex(List<string> allAttributes, int input)
-        {
             while (!(input >= 0 && input < allAttributes.Count))
             {
                 ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Menu_Input_Integer") + ":");
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + ":");
                 input = ConsoleWrapper.ReadLine(ConsoleColor.Green)[0] - 48;
             }
 
             return input;
         }
 
-        private static string ValidateAndInputAttributeValue(string name, string inputValue)
-        {      
+        private string InputAttributeValue(string name)
+        {
+            string resourceId = ResourceContext.PropertyToId.GetString(name);
+
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
+            Console.Write(":");
+
+            ConsoleWrapper.Write("(", ConsoleColor.White);
+            ConsoleWrapper.Write(ResourceContext.Language.GetString(name + "_Range"), ConsoleColor.Blue);
+            ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
+            string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
             while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
             {
-                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
-                string resourceId = ResourceContext.PropertyToId.GetString(name);              
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                          
                 ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
                 Console.Write(":");
 
@@ -205,17 +216,27 @@ namespace Övning_5_Presentation_Layer
             return inputValue;
         }
 
-        private static int ValidateAndParseAndInputAttributeValue(string name, string inputValue)
+        private int InputAttributeQuantity(string name)
         {
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
+            ConsoleWrapper.Write("(", ConsoleColor.White);
+            ConsoleWrapper.Write(ResourceContext.Language.GetString("Attribute_Range"), ConsoleColor.Blue);
+            ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
+            string inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
+
             int outputValue;
 
             while (String.IsNullOrWhiteSpace(inputValue) || 
                     !ValidationHandler.Validate(inputValue, name) ||
                     !Int32.TryParse(inputValue, out outputValue))
             {
-                ConsoleWrapper.Write(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
                 ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
-                Console.Write(":");
+                ConsoleWrapper.Write("(", ConsoleColor.White);
+                ConsoleWrapper.Write(ResourceContext.Language.GetString("Attribute_Range"), ConsoleColor.Blue);
+                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
+
                 inputValue = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
 

@@ -65,7 +65,7 @@ namespace Övning_5_Presentation_Layer
 
             while (running)
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + " ", 2);
+                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Command") + ":", 2);
 
                 String input = ConsoleWrapper.ReadLine(ConsoleColor.Green);
 

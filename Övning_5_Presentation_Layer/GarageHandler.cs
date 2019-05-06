@@ -38,11 +38,12 @@ namespace Övning_5_Presentation_Layer
 
         public IGarageRepository<Vehicle> Garage { get; set; }
 
-        public void SetCapacity(int capacity)
+        public void CreateGarage()
         {
+            int capacity = InputHandler.InputGarageCapacity();
             Garage = new Gararge<Vehicle>(capacity);
         }
-        
+
         public void FindVehicleByAttributes()
         {
             if (Garage.Count() == 0)
@@ -52,7 +53,7 @@ namespace Övning_5_Presentation_Layer
             }
 
             Dictionary<String, String> attributes = InputHandler.InputAttributes(GetAllAttributes());                    
-            ListVehiclesWithAttributes(attributes);
+            ListVehicles(attributes);
         }
 
         public void FindVehicleByLicense()
@@ -63,11 +64,13 @@ namespace Övning_5_Presentation_Layer
                 return;
             }
 
-            string input = InputHandler.InputAndValidateLicense();
-            ListVehiclesByLicensePlate(input);
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Search_For"));
+            string input = InputHandler.InputLicensePlate();
+
+            ListVehicles(input);
         }
 
-        private void ListVehiclesByLicensePlate(String licensePlate)
+        private void ListVehicles(String licensePlate)
         {
             Vehicle vehicle = Garage.Find(licensePlate);
           
@@ -101,7 +104,7 @@ namespace Övning_5_Presentation_Layer
             return attributes.Distinct().ToList();
         }
 
-        private void ListVehiclesWithAttributes(Dictionary<String, String> attributes)
+        private void ListVehicles(Dictionary<String, String> attributes)
         {
             IEnumerable<Vehicle> result = Garage.Find(attributes).ToList();
 
@@ -113,12 +116,17 @@ namespace Övning_5_Presentation_Layer
 
             Console.WriteLine();
 
-            foreach (var vehicle in result)
+            List<Vehicle> vehicles = result.ToList();
+            
+            for (int i = 0; i < vehicles.Count; i++)          
             {
-                Write(vehicle);
-            }
+                Write(vehicles[i]);
 
-            //Console.WriteLine();
+                if (i < (vehicles.Count - 1))
+                {
+                    Console.WriteLine();
+                }
+            }          
         }
 
         public void ListVehicles()
@@ -161,16 +169,8 @@ namespace Övning_5_Presentation_Layer
                 return;
             }
 
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Drive") + " ");
-            ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
-            string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-      
-            while (String.IsNullOrWhiteSpace(input) || !ValidationHandler.Validate(input, "LicensePlate"))
-            {             
-                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
-                ConsoleWrapper.Write(ResourceContext.Language.GetString("Vehicle_License_Plate") + ":", ConsoleColor.Yellow);
-                input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-            }
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_License_Plate_To_Drive"));
+            string input = InputHandler.InputLicensePlate();
 
             Vehicle vehicle = Garage.Find(input);
 
@@ -213,34 +213,6 @@ namespace Övning_5_Presentation_Layer
             }
         }
      
-        public void InputGarageCapacity()
-        {         
-            bool validInput = false;
-
-            while (!validInput)
-            {
-                Console.Write(ResourceContext.Language.GetString("Menu_Input_Capacity"));
-
-                ConsoleWrapper.Write("(", ConsoleColor.White);
-                ConsoleWrapper.Write(ResourceContext.Language.GetString("Capacity_Range"), ConsoleColor.Blue);
-                ConsoleWrapper.WriteLine("):", ConsoleColor.White);
-
-                string input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
-
-                if (!String.IsNullOrWhiteSpace(input) && 
-                    ValidationHandler.Validate(input, "Capacity") && 
-                    Int32.TryParse(input, out int capacity))
-                {
-                    validInput = true;
-                    SetCapacity(capacity);
-                }
-                else
-                {
-                    ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Input"), ConsoleColor.Red);
-                }
-            }
-        }
-
         private void Write(Vehicle vehicle)
         {          
             WriteType(vehicle.GetType());

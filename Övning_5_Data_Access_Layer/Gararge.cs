@@ -117,7 +117,7 @@ namespace Övning_5_Data_Access_Layer
 
                     if(x.GetProperties().TryGetValue(kvp.Key, out string value))
                     {
-                        if (value == kvp.Value) {
+                        if (value.ToUpper() == kvp.Value.ToUpper()) {
                             return true;
                         }                  
                     }
