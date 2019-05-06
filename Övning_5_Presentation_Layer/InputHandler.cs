@@ -69,7 +69,8 @@ namespace Övning_5_Presentation_Layer
                                     !ValidationHandler.Validate(input, param.name) ||
                                     !param.tryParse(input, out param.value))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ConsoleWrapper.WritePreLinePostLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ListArgumentOptions(param);
                 input = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             }
         }
@@ -117,9 +118,11 @@ namespace Övning_5_Presentation_Layer
         {           
             Dictionary<string, string> attributeDictionary = new Dictionary<string, string>();
            
-            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For"));
+            ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Input_Number_Of_Attributes_To_Search_For"));          
             ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Attribute_Quantity"), ConsoleColor.Yellow);
-            Console.Write(":");
+            ConsoleWrapper.Write("(", ConsoleColor.White);
+            ConsoleWrapper.Write(ResourceContext.Language.GetString("Attribute_Range"), ConsoleColor.Blue);
+            ConsoleWrapper.WriteLine("):", ConsoleColor.White);
 
             string inputNumberOfAttributes = ConsoleWrapper.ReadLine(ConsoleColor.Blue);
             int numberOfAttributes = ValidateAndParseAndInputAttributeValue("NumberOfAttributes", inputNumberOfAttributes);
@@ -187,7 +190,7 @@ namespace Övning_5_Presentation_Layer
         {      
             while (String.IsNullOrWhiteSpace(inputValue) || !ValidationHandler.Validate(inputValue, name))
             {
-                ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
+                ConsoleWrapper.WriteLine(ResourceContext.Language.GetString("Invalid_Option"), ConsoleColor.Red);
                 string resourceId = ResourceContext.PropertyToId.GetString(name);              
                 ConsoleWrapper.WritePreLine(ResourceContext.Language.GetString(resourceId), ConsoleColor.Yellow);
                 Console.Write(":");
